@@ -223,29 +223,31 @@ Establish reusable visual foundations.
 Primary:
 
 ```text
-#1474E2
-#1555DD
-#1ED3B1
-#16B4C6
-#101D32
+#001265
+#022EC2
+#0447EB
+#0A73FB
+#1BC8FC
 ```
 
 Neutrals:
 
 ```text
-#F8FAFC
 #FFFFFF
+#F8FAFC
 #E2E8F0
 #64748B
+#101D32
 ```
 
 Gradient:
 
 ```text
-#1555DD
-→ #1474E2
-→ #16B4C6
-→ #1ED3B1
+#001265
+→ #022EC2
+→ #0447EB
+→ #0A73FB
+→ #1BC8FC
 ```
 
 ### Tasks
