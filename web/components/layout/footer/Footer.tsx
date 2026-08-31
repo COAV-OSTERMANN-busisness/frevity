@@ -1,9 +1,15 @@
+"use client";
+
 import Link from "next/link";
 
-import { Logo } from "@/components/ui/logo/Logo";
+import { Logo } from "@/components/ui/logo";
+import { useI18n } from "@/components/providers/i18n";
+import { messages } from "@/lib/i18n/messages";
+
+export type FooterLinkKey = keyof typeof messages.en.common.footer;
 
 export interface FooterLink {
-  label: string;
+  labelKey: FooterLinkKey;
   href: string;
 }
 
@@ -12,19 +18,17 @@ export interface FooterProps {
   copyright?: string;
 }
 
-export function Footer({
-  links = [],
-  copyright = "© Frevity. All rights reserved.",
-}: FooterProps) {
+export function Footer({ links = [], copyright }: FooterProps) {
+  const { locale } = useI18n();
+  const translations = messages[locale].common.footer;
+
+  const resolvedCopyright = copyright ?? translations.copyright;
+
   return (
     <footer className="border-t border-[var(--color-border)] bg-[var(--color-surface)]">
       <div className="mx-auto flex w-full max-w-7xl flex-col gap-8 px-4 py-10 sm:px-6 lg:px-8">
         <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
-          <Logo
-            variant="text"
-            href="/"
-            width={150}
-          />
+          <Logo variant="text" href="/" width={150} />
 
           {links.length > 0 && (
             <nav aria-label="Footer navigation">
@@ -35,7 +39,7 @@ export function Footer({
                       href={link.href}
                       className="text-sm text-[var(--color-muted)] transition-colors hover:text-[var(--color-primary)]"
                     >
-                      {link.label}
+                      {translations[link.labelKey]}
                     </Link>
                   </li>
                 ))}
@@ -46,7 +50,7 @@ export function Footer({
 
         <div className="border-t border-[var(--color-border)] pt-6">
           <p className="text-sm text-[var(--color-muted)]">
-            {copyright}
+            {resolvedCopyright}
           </p>
         </div>
       </div>

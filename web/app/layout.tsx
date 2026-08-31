@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import type { ReactNode } from "react";
 
-import { Footer } from "@/components/layout/footer/Footer";
-import { Header } from "@/components/layout/header/Header";
+import { Footer } from "@/components/layout/footer";
+import { Header } from "@/components/layout/header";
+import { I18nProvider } from "@/components/providers/i18n";
 
 import "./globals.css";
 
@@ -52,24 +53,22 @@ interface RootLayoutProps {
   children: ReactNode;
 }
 
-export default function RootLayout({
-  children,
-}: RootLayoutProps) {
+export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full bg-[var(--color-background)] font-sans text-[var(--color-text)]">
-        <div className="flex min-h-screen flex-col">
-          <Header navigation={navigation} />
+        <I18nProvider>
+          <div className="flex min-h-screen flex-col">
+            <Header navigation={navigation} />
 
-          <main className="flex flex-1 flex-col">
-            {children}
-          </main>
+            <main className="flex flex-1 flex-col">{children}</main>
 
-          <Footer links={footerLinks} />
-        </div>
+            <Footer links={footerLinks} />
+          </div>
+        </I18nProvider>
       </body>
     </html>
   );

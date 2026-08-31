@@ -1,14 +1,21 @@
+"use client";
+
 import Link from "next/link";
 
-import { Logo } from "@/components/ui/logo/Logo";
+import { LanguageSelector } from "@/components/layout/language-selector";
+import { Logo } from "@/components/ui/logo";
+import { useI18n } from "@/components/providers/i18n";
+import { messages } from "@/lib/i18n/messages";
+
+export type HeaderNavigationKey = keyof typeof messages.en.common.header;
 
 export interface HeaderNavigationItem {
-  label: string;
+  labelKey: HeaderNavigationKey;
   href: string;
 }
 
 export interface HeaderAction {
-  label: string;
+  labelKey: HeaderNavigationKey;
   href: string;
 }
 
@@ -23,10 +30,10 @@ interface NavigationLinksProps {
   mobile?: boolean;
 }
 
-function NavigationLinks({
-  items,
-  mobile = false,
-}: NavigationLinksProps) {
+function NavigationLinks({ items, mobile = false }: NavigationLinksProps) {
+  const { locale } = useI18n();
+  const translations = messages[locale].common.header;
+
   return (
     <>
       {items.map((item) => (
@@ -39,7 +46,7 @@ function NavigationLinks({
               : "text-sm font-medium text-[var(--color-text)] transition-colors hover:text-[var(--color-primary)]"
           }
         >
-          {item.label}
+          {translations[item.labelKey]}
         </Link>
       ))}
     </>
@@ -53,6 +60,9 @@ function PrimaryAction({
   action: HeaderAction;
   mobile?: boolean;
 }) {
+  const { locale } = useI18n();
+  const translations = messages[locale].common.header;
+
   return (
     <Link
       href={action.href}
@@ -62,7 +72,7 @@ function PrimaryAction({
           : "rounded-lg bg-[var(--color-primary)] px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[var(--color-primary-dark)]"
       }
     >
-      {action.label}
+      {translations[action.labelKey]}
     </Link>
   );
 }
@@ -70,11 +80,16 @@ function PrimaryAction({
 export function Header({
   navigation,
   primaryAction,
-  mobileMenuLabel = "Open navigation menu",
+  mobileMenuLabel,
 }: HeaderProps) {
+  const { locale } = useI18n();
+  const translations = messages[locale].common.header;
+
+  const resolvedMobileMenuLabel = mobileMenuLabel ?? translations.mobileMenu;
+
   return (
     <header className="border-b border-[var(--color-border)] bg-[var(--color-surface)]">
-      <div className="mx-auto flex min-h-16 w-full max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto flex min-h-16 w-full max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
         <Logo
           variant="icon"
           href="/"
@@ -83,48 +98,43 @@ export function Header({
           className="h-10 w-10 object-contain"
         />
 
-        <nav
-          aria-label="Primary navigation"
-          className="hidden items-center gap-8 md:flex"
-        >
-          <NavigationLinks items={navigation} />
-
-          {primaryAction && <PrimaryAction action={primaryAction} />}
-        </nav>
-
-        <details className="relative md:hidden">
-          <summary
-            aria-label={mobileMenuLabel}
-            className="flex h-10 w-10 cursor-pointer list-none items-center justify-center rounded-lg border border-[var(--color-border)] text-[var(--color-text)] [&::-webkit-details-marker]:hidden"
+        <div className="flex items-center gap-4">
+          <nav
+            aria-label="Primary navigation"
+            className="hidden items-center gap-8 md:flex"
           >
-            <span className="sr-only">{mobileMenuLabel}</span>
+            <NavigationLinks items={navigation} />
 
-            <span
-              className="flex flex-col gap-1.5"
-              aria-hidden="true"
+            {primaryAction && <PrimaryAction action={primaryAction} />}
+          </nav>
+
+          <LanguageSelector />
+
+          <details className="relative md:hidden">
+            <summary
+              aria-label={resolvedMobileMenuLabel}
+              className="flex h-10 w-10 cursor-pointer list-none items-center justify-center rounded-lg border border-[var(--color-border)] text-[var(--color-text)] [&::-webkit-details-marker]:hidden"
             >
-              <span className="h-0.5 w-5 bg-current" />
-              <span className="h-0.5 w-5 bg-current" />
-              <span className="h-0.5 w-5 bg-current" />
-            </span>
-          </summary>
+              <span className="sr-only">{resolvedMobileMenuLabel}</span>
 
-          <div className="absolute right-0 top-14 z-50 w-64 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-3 shadow-lg">
-            <nav
-              aria-label="Mobile navigation"
-              className="flex flex-col"
-            >
-              <NavigationLinks items={navigation} mobile />
+              <span className="flex flex-col gap-1.5" aria-hidden="true">
+                <span className="h-0.5 w-5 bg-current" />
+                <span className="h-0.5 w-5 bg-current" />
+                <span className="h-0.5 w-5 bg-current" />
+              </span>
+            </summary>
 
-              {primaryAction && (
-                <PrimaryAction
-                  action={primaryAction}
-                  mobile
-                />
-              )}
-            </nav>
-          </div>
-        </details>
+            <div className="absolute right-0 top-14 z-50 w-64 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-3 shadow-lg">
+              <nav aria-label="Mobile navigation" className="flex flex-col">
+                <NavigationLinks items={navigation} mobile />
+
+                {primaryAction && (
+                  <PrimaryAction action={primaryAction} mobile />
+                )}
+              </nav>
+            </div>
+          </details>
+        </div>
       </div>
     </header>
   );
