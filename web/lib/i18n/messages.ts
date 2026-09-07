@@ -98,6 +98,35 @@ export const messages = {
           },
         },
       },
+
+      globalCoverage: {
+        title: "Simulate freight costs across supported markets",
+        description:
+          "Frevity helps you estimate transportation costs for supported national markets and international shipments.",
+        markets: {
+          brazil: {
+            title: "Brazil",
+            description:
+              "Simulate domestic transportation costs using Brazilian real (BRL).",
+          },
+          unitedStates: {
+            title: "United States",
+            description:
+              "Simulate domestic transportation costs using US dollars (USD).",
+          },
+          euroMarkets: {
+            title: "Euro Markets",
+            description:
+              "Simulate domestic transportation costs in supported euro markets (EUR).",
+          },
+          japan: {
+            title: "Japan",
+            description:
+              "Simulate domestic transportation costs using Japanese yen (JPY).",
+          },
+        },
+        note: "International shipments are presented in USD in the MVP. Coverage depends on the supported markets configured by Frevity.",
+      },
     },
   },
 
@@ -200,6 +229,34 @@ export const messages = {
           },
         },
       },
+      globalCoverage: {
+        title: "Simula costos de flete en mercados compatibles",
+        description:
+          "Frevity te ayuda a estimar los costos de transporte en mercados nacionales compatibles y envíos internacionales.",
+        markets: {
+          brazil: {
+            title: "Brasil",
+            description:
+              "Simula los costos de transporte nacional utilizando reales brasileños (BRL).",
+          },
+          unitedStates: {
+            title: "Estados Unidos",
+            description:
+              "Simula los costos de transporte nacional utilizando dólares estadounidenses (USD).",
+          },
+          euroMarkets: {
+            title: "Mercados en euros",
+            description:
+              "Simula los costos de transporte nacional en mercados compatibles con euro (EUR).",
+          },
+          japan: {
+            title: "Japón",
+            description:
+              "Simula los costos de transporte nacional utilizando yenes japoneses (JPY).",
+          },
+        },
+        note: "Los envíos internacionales se presentan en USD en el MVP. La cobertura depende de los mercados compatibles configurados por Frevity.",
+      },
     },
   },
 
@@ -301,6 +358,35 @@ export const messages = {
           },
         },
       },
+
+      globalCoverage: {
+        title: "Simule custos de frete em mercados compatíveis",
+        description:
+          "O Frevity ajuda você a estimar custos de transporte em mercados nacionais compatíveis e em remessas internacionais.",
+        markets: {
+          brazil: {
+            title: "Brasil",
+            description:
+              "Simule custos de transporte nacional utilizando o real brasileiro (BRL).",
+          },
+          unitedStates: {
+            title: "Estados Unidos",
+            description:
+              "Simule custos de transporte nacional utilizando o dólar americano (USD).",
+          },
+          euroMarkets: {
+            title: "Mercados em euro",
+            description:
+              "Simule custos de transporte nacional em mercados compatíveis com o euro (EUR).",
+          },
+          japan: {
+            title: "Japão",
+            description:
+              "Simule custos de transporte nacional utilizando o iene japonês (JPY).",
+          },
+        },
+        note: "As remessas internacionais são apresentadas em USD no MVP. A cobertura depende dos mercados compatíveis configurados pelo Frevity.",
+      },
     },
   },
 
@@ -396,6 +482,34 @@ export const messages = {
               "出荷内容に応じて貨物、輸送、コストの情報を入力できます。",
           },
         },
+      },
+      globalCoverage: {
+        title: "対応市場で輸送コストをシミュレーション",
+        description:
+          "Frevityは、対応する国内市場と国際輸送のコストを見積もるためのシミュレーションツールです。",
+        markets: {
+          brazil: {
+            title: "ブラジル",
+            description:
+              "ブラジルレアル（BRL）で国内輸送コストをシミュレーションできます。",
+          },
+          unitedStates: {
+            title: "米国",
+            description:
+              "米ドル（USD）で国内輸送コストをシミュレーションできます。",
+          },
+          euroMarkets: {
+            title: "ユーロ圏市場",
+            description:
+              "対応するユーロ市場でユーロ（EUR）による国内輸送コストをシミュレーションできます。",
+          },
+          japan: {
+            title: "日本",
+            description:
+              "日本円（JPY）で国内輸送コストをシミュレーションできます。",
+          },
+        },
+        note: "MVPでは国際輸送をUSDで表示します。対応範囲はFrevityが設定する対応市場によって異なります。",
       },
     },
   },

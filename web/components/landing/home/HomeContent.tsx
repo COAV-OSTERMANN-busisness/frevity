@@ -4,6 +4,7 @@ import { useI18n } from "@/components/providers/i18n";
 import { Hero } from "./hero";
 import { HowItWorks } from "./how-it-works";
 import { Features } from "./features";
+import { GlobalCoverage } from "./global-coverage";
 
 export function HomeContent() {
   const { locale } = useI18n();
@@ -15,6 +16,8 @@ export function HomeContent() {
       <HowItWorks locale={locale} />
 
       <Features locale={locale} />
+
+      <GlobalCoverage locale={locale} />
     </div>
   );
 }
