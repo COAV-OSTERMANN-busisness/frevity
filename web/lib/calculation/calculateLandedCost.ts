@@ -9,40 +9,17 @@ export interface LandedCostInput {
   otherCosts?: Money;
 }
 
-/**
- * Ensures that all monetary values participating in the
- * landed cost calculation use the same currency.
- *
- * Currency resolution is handled outside the calculation engine.
- * The engine receives already-resolved monetary values.
- */
-function assertSameCurrency(
-  base: Money,
-  values: Array<Money | undefined>,
-): void {
-  for (const value of values) {
-    if (value && value.currency !== base.currency) {
-      throw new Error("All monetary values must use the same currency.");
-    }
-  }
-}
-
-/**
- * Calculates the total landed cost from the freight and
- * applicable logistics cost components.
- *
- * The calculation engine does not determine the currency
- * from country, locale, or transport scope.
- *
- * National and international currency rules must be resolved
- * before this function is called:
- *
- * - Supported national markets → configured national currency
- * - International freight in the MVP → USD
- */
 export function calculateLandedCost(input: LandedCostInput): Money {
   const { freight, insurance, customs, handling, localTransport, otherCosts } =
     input;
+
+  validateMoney(freight, "Freight amount");
+
+  validateMoney(insurance, "Insurance amount");
+  validateMoney(customs, "Customs amount");
+  validateMoney(handling, "Handling amount");
+  validateMoney(localTransport, "Local transport amount");
+  validateMoney(otherCosts, "Other costs amount");
 
   assertSameCurrency(freight, [
     insurance,
@@ -60,8 +37,29 @@ export function calculateLandedCost(input: LandedCostInput): Money {
     (localTransport?.amount ?? 0) +
     (otherCosts?.amount ?? 0);
 
+  if (!Number.isFinite(amount)) {
+    throw new Error("Calculated landed cost must be a finite number.");
+  }
+
   return {
     amount,
     currency: freight.currency,
   };
+}
+
+function validateMoney(money: Money | undefined, fieldName: string): void {
+  if (money && !Number.isFinite(money.amount)) {
+    throw new Error(`${fieldName} must be a finite number.`);
+  }
+}
+
+function assertSameCurrency(
+  base: Money,
+  values: Array<Money | undefined>,
+): void {
+  for (const value of values) {
+    if (value && value.currency !== base.currency) {
+      throw new Error("All monetary values must use the same currency.");
+    }
+  }
 }

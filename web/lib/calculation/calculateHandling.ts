@@ -14,14 +14,26 @@ export function calculateHandling(
   const charges = handling.charges ?? [];
 
   for (const charge of charges) {
-    if (charge.amount && charge.amount.currency !== currency) {
-      throw new Error("Handling charges must use the calculation currency.");
+    if (charge.amount) {
+      if (!Number.isFinite(charge.amount.amount)) {
+        throw new Error("Handling charge amounts must be finite numbers.");
+      }
+
+      if (charge.amount.currency !== currency) {
+        throw new Error("Handling charges must use the calculation currency.");
+      }
     }
 
-    if (charge.unitPrice && charge.unitPrice.currency !== currency) {
-      throw new Error(
-        "Handling unit prices must use the calculation currency.",
-      );
+    if (charge.unitPrice) {
+      if (!Number.isFinite(charge.unitPrice.amount)) {
+        throw new Error("Handling unit prices must be finite numbers.");
+      }
+
+      if (charge.unitPrice.currency !== currency) {
+        throw new Error(
+          "Handling unit prices must use the calculation currency.",
+        );
+      }
     }
   }
 
@@ -29,6 +41,10 @@ export function calculateHandling(
     (total, charge) => total + (charge.amount?.amount ?? 0),
     0,
   );
+
+  if (!Number.isFinite(amount)) {
+    throw new Error("Calculated handling amount must be a finite number.");
+  }
 
   return {
     amount,

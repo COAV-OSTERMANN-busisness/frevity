@@ -14,10 +14,18 @@ export function calculateLocalTransport(
   const charges = localTransport.charges ?? [];
 
   for (const charge of charges) {
-    if (charge.amount && charge.amount.currency !== currency) {
-      throw new Error(
-        "Local transport charges must use the calculation currency.",
-      );
+    if (charge.amount) {
+      if (!Number.isFinite(charge.amount.amount)) {
+        throw new Error(
+          "Local transport charge amounts must be finite numbers.",
+        );
+      }
+
+      if (charge.amount.currency !== currency) {
+        throw new Error(
+          "Local transport charges must use the calculation currency.",
+        );
+      }
     }
   }
 
@@ -25,6 +33,12 @@ export function calculateLocalTransport(
     (total, charge) => total + (charge.amount?.amount ?? 0),
     0,
   );
+
+  if (!Number.isFinite(amount)) {
+    throw new Error(
+      "Calculated local transport amount must be a finite number.",
+    );
+  }
 
   return {
     amount,

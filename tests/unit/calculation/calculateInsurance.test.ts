@@ -1,45 +1,82 @@
 import { describe, expect, it } from "vitest";
 import { calculateInsurance } from "@/lib/calculation/calculateInsurance";
 
+const currencies = ["BRL", "EUR", "USD", "JPY"];
+
 describe("calculateInsurance", () => {
-  it("returns zero when insurance is disabled", () => {
-    const result = calculateInsurance(
-      {
-        enabled: false,
-      },
-      "USD",
-    );
+  it.each(currencies)(
+    "returns zero when insurance is disabled using %s",
+    (currency) => {
+      const result = calculateInsurance(
+        {
+          enabled: false,
+        },
+        currency,
+      );
 
-    expect(result.amount).toBe(0);
-    expect(result.currency).toBe("USD");
-  });
+      expect(result).toEqual({
+        amount: 0,
+        currency,
+      });
+    },
+  );
 
-  it("calculates insurance from the insured value and rate", () => {
+  it.each(currencies)(
+    "calculates insurance using %s",
+    (currency) => {
+      const result = calculateInsurance(
+        {
+          enabled: true,
+          insuredValue: {
+            amount: 1000,
+            currency,
+          },
+          ratePercent: 2.5,
+        },
+        currency,
+      );
+
+      expect(result).toEqual({
+        amount: 25,
+        currency,
+      });
+    },
+  );
+
+  it("calculates insurance with a decimal insured value", () => {
     const result = calculateInsurance(
       {
         enabled: true,
-        insuredValue: { amount: 1000, currency: "USD" },
-        ratePercent: 2.5,
+        insuredValue: {
+          amount: 1250.75,
+          currency: "BRL",
+        },
+        ratePercent: 2,
       },
-      "USD",
+      "BRL",
     );
 
-    expect(result.amount).toBe(25);
-    expect(result.currency).toBe("USD");
+    expect(result.amount).toBeCloseTo(25.015, 10);
+    expect(result.currency).toBe("BRL");
   });
 
   it("returns zero when the insurance rate is zero", () => {
     const result = calculateInsurance(
       {
         enabled: true,
-        insuredValue: { amount: 1000, currency: "USD" },
+        insuredValue: {
+          amount: 1000,
+          currency: "EUR",
+        },
         ratePercent: 0,
       },
-      "USD",
+      "EUR",
     );
 
-    expect(result.amount).toBe(0);
-    expect(result.currency).toBe("USD");
+    expect(result).toEqual({
+      amount: 0,
+      currency: "EUR",
+    });
   });
 
   it("throws when insurance is enabled without an insured value", () => {
@@ -51,7 +88,24 @@ describe("calculateInsurance", () => {
         },
         "USD",
       ),
-    ).toThrow("Insured value is required when insurance is enabled.");
+    ).toThrow(
+      "Insured value is required when insurance is enabled.",
+    );
+  });
+
+  it("throws when the insurance rate is undefined", () => {
+    expect(() =>
+      calculateInsurance(
+        {
+          enabled: true,
+          insuredValue: {
+            amount: 1000,
+            currency: "JPY",
+          },
+        },
+        "JPY",
+      ),
+    ).toThrow("Insurance rate must be zero or greater.");
   });
 
   it("throws when the insurance rate is negative", () => {
@@ -59,7 +113,10 @@ describe("calculateInsurance", () => {
       calculateInsurance(
         {
           enabled: true,
-          insuredValue: { amount: 1000, currency: "USD" },
+          insuredValue: {
+            amount: 1000,
+            currency: "USD",
+          },
           ratePercent: -1,
         },
         "USD",
@@ -72,11 +129,104 @@ describe("calculateInsurance", () => {
       calculateInsurance(
         {
           enabled: true,
-          insuredValue: { amount: 1000, currency: "EUR" },
+          insuredValue: {
+            amount: 1000,
+            currency: "EUR",
+          },
           ratePercent: 2,
+        },
+        "BRL",
+      ),
+    ).toThrow(
+      "Insured value must use the calculation currency.",
+    );
+  });
+
+  it("throws when the insurance rate is NaN", () => {
+    expect(() =>
+      calculateInsurance(
+        {
+          enabled: true,
+          insuredValue: {
+            amount: 1000,
+            currency: "USD",
+          },
+          ratePercent: Number.NaN,
         },
         "USD",
       ),
-    ).toThrow("Insured value must use the calculation currency.");
+    ).toThrow("Insurance rate must be a finite number.");
+  });
+
+  it.each([
+    Number.POSITIVE_INFINITY,
+    Number.NEGATIVE_INFINITY,
+  ])("throws when the insurance rate is %s", (ratePercent) => {
+    expect(() =>
+      calculateInsurance(
+        {
+          enabled: true,
+          insuredValue: {
+            amount: 1000,
+            currency: "USD",
+          },
+          ratePercent,
+        },
+        "USD",
+      ),
+    ).toThrow("Insurance rate must be a finite number.");
+  });
+
+  it("throws when insured value amount is NaN", () => {
+    expect(() =>
+      calculateInsurance(
+        {
+          enabled: true,
+          insuredValue: {
+            amount: Number.NaN,
+            currency: "BRL",
+          },
+          ratePercent: 2,
+        },
+        "BRL",
+      ),
+    ).toThrow("Insured value must be a finite number.");
+  });
+
+  it.each([
+    Number.POSITIVE_INFINITY,
+    Number.NEGATIVE_INFINITY,
+  ])("throws when insured value amount is %s", (amount) => {
+    expect(() =>
+      calculateInsurance(
+        {
+          enabled: true,
+          insuredValue: {
+            amount,
+            currency: "EUR",
+          },
+          ratePercent: 2,
+        },
+        "EUR",
+      ),
+    ).toThrow("Insured value must be a finite number.");
+  });
+
+  it("throws when the calculated insurance amount is not finite", () => {
+    expect(() =>
+      calculateInsurance(
+        {
+          enabled: true,
+          insuredValue: {
+            amount: Number.MAX_VALUE,
+            currency: "JPY",
+          },
+          ratePercent: Number.MAX_VALUE,
+        },
+        "JPY",
+      ),
+    ).toThrow(
+      "Calculated insurance amount must be a finite number.",
+    );
   });
 });

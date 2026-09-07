@@ -4,6 +4,18 @@ export function calculateLogisticsPercentage(
   logisticsCost: Money,
   cargoValue: Money,
 ): number {
+  if (!Number.isFinite(logisticsCost.amount)) {
+    throw new Error("Logistics cost must be a finite number.");
+  }
+
+  if (!Number.isFinite(cargoValue.amount)) {
+    throw new Error("Cargo value must be a finite number.");
+  }
+
+  if (logisticsCost.amount < 0) {
+    throw new Error("Logistics cost must be zero or greater.");
+  }
+
   if (cargoValue.amount <= 0) {
     throw new Error("Cargo value must be greater than zero.");
   }
@@ -14,5 +26,13 @@ export function calculateLogisticsPercentage(
     );
   }
 
-  return (logisticsCost.amount / cargoValue.amount) * 100;
+  const percentage = (logisticsCost.amount / cargoValue.amount) * 100;
+
+  if (!Number.isFinite(percentage)) {
+    throw new Error(
+      "Calculated logistics percentage must be a finite number.",
+    );
+  }
+
+  return percentage;
 }

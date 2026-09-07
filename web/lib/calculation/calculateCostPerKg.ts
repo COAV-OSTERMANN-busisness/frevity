@@ -2,20 +2,34 @@ import type { Money, Weight } from "@/types/calculation";
 
 export function calculateCostPerKg(
   totalCost: Money,
-  totalWeight: Weight
+  totalWeight: Weight,
 ): Money {
+  if (!Number.isFinite(totalCost.amount)) {
+    throw new Error("Total cost must be a finite number.");
+  }
+
+  if (!Number.isFinite(totalWeight.value)) {
+    throw new Error("Total weight must be a finite number.");
+  }
+
   if (totalWeight.value <= 0) {
     throw new Error("Total weight must be greater than zero.");
   }
 
   const weightInKg = convertToKg(totalWeight);
 
-  if (weightInKg <= 0) {
+  if (!Number.isFinite(weightInKg) || weightInKg <= 0) {
     throw new Error("Total weight must be greater than zero.");
   }
 
+  const amount = totalCost.amount / weightInKg;
+
+  if (!Number.isFinite(amount)) {
+    throw new Error("Calculated cost per kilogram must be a finite number.");
+  }
+
   return {
-    amount: totalCost.amount / weightInKg,
+    amount,
     currency: totalCost.currency,
   };
 }
