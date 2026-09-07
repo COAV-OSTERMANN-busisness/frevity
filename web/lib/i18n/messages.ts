@@ -38,6 +38,28 @@ export const messages = {
           totalValue: "$1,820.00",
         },
       },
+
+      howItWorks: {
+        title: "How Frevity works",
+        description: "Estimate your landed cost in three simple steps.",
+        steps: {
+          one: {
+            title: "Enter your shipment",
+            description:
+              "Provide the origin, destination, cargo and transport details.",
+          },
+          two: {
+            title: "Add your costs",
+            description:
+              "Include freight, insurance, customs, handling and other applicable costs.",
+          },
+          three: {
+            title: "Calculate your landed cost",
+            description:
+              "Frevity combines the provided information into a clear landed cost estimate.",
+          },
+        },
+      },
     },
   },
 
@@ -64,10 +86,10 @@ export const messages = {
           "Contenedores de carga en un puerto marítimo, representando logística y flete.",
         title: "Conoce el costo real de mover tu carga.",
         description:
-          "Calcula tu costo aterrizado con un flujo de cálculo de flete claro y consistente.",
-        cta: "Calcular Costo Aterrizado",
+          "Calcula tu costo puesto en destino con un flujo de cálculo de flete claro y consistente.",
+        cta: "Calcular Costo Puesto en Destino",
         summary: {
-          title: "Resumen de Costo Aterrizado",
+          title: "Resumen del Costo Puesto en Destino",
           freight: "Flete",
           insurance: "Seguro",
           customs: "Aduanas",
@@ -78,6 +100,28 @@ export const messages = {
           customsValue: "€350.00",
           handlingValue: "€90.00",
           totalValue: "€1,820.00",
+        },
+      },
+
+      howItWorks: {
+        title: "Cómo funciona Frevity",
+        description: "Estima tu costo puesto en destino en tres simples pasos.",
+        steps: {
+          one: {
+            title: "Ingresa tu envío",
+            description:
+              "Proporciona el origen, destino, carga y detalles del transporte.",
+          },
+          two: {
+            title: "Añade tus costos",
+            description:
+              "Incluye flete, seguro, aduanas, manipulación y otros costos aplicables.",
+          },
+          three: {
+            title: "Calcula tu costo puesto en destino",
+            description:
+              "Frevity combina la información proporcionada en una estimación clara del costo puesto en destino.",
+          },
         },
       },
     },
@@ -106,10 +150,10 @@ export const messages = {
           "Contêineres de carga em um porto, representando logística e frete.",
         title: "Saiba o custo real de movimentar sua carga.",
         description:
-          "Calcule seu custo aterrissado com um fluxo de cálculo de frete claro e consistente.",
-        cta: "Calcular Custo Aterrissado",
+          "Calcule seu frete com um fluxo de cálculo claro e consistente.",
+        cta: "Calcular Frete",
         summary: {
-          title: "Resumo do Custo Aterrissado",
+          title: "Resumo do Cálculo de Frete",
           freight: "Frete",
           insurance: "Seguro",
           customs: "Alfândega",
@@ -120,6 +164,28 @@ export const messages = {
           customsValue: "R$ 350,00",
           handlingValue: "R$ 90,00",
           totalValue: "R$ 1.820,00",
+        },
+      },
+
+      howItWorks: {
+        title: "Como o Frevity funciona",
+        description: "Calcule seu frete em três passos simples.",
+        steps: {
+          one: {
+            title: "Informe seu envio",
+            description:
+              "Informe origem, destino, carga e detalhes do transporte.",
+          },
+          two: {
+            title: "Adicione seus custos",
+            description:
+              "Inclua frete, seguro, alfândega, manuseio e outros custos aplicáveis.",
+          },
+          three: {
+            title: "Calcule seu frete",
+            description:
+              "O Frevity combina as informações fornecidas em um cálculo claro de frete.",
+          },
         },
       },
     },
@@ -147,10 +213,10 @@ export const messages = {
         imageAlt: "港の貨物コンテナ。物流とフレートを表現。",
         title: "貨物を動かす本当のコストを知る。",
         description:
-          "明確で一貫したフレート計算ワークフローで着荷コストを計算します。",
-        cta: "着荷コストを計算",
+          "明確で一貫したフレート計算ワークフローで着地原価を計算します。",
+        cta: "着地原価を計算",
         summary: {
-          title: "着荷コストサマリー",
+          title: "着地原価サマリー",
           freight: "フレート",
           insurance: "保険",
           customs: "関税",
@@ -161,6 +227,27 @@ export const messages = {
           customsValue: "¥350",
           handlingValue: "¥90",
           totalValue: "¥1,820",
+        },
+      },
+
+      howItWorks: {
+        title: "Frevityの仕組み",
+        description: "3つの簡単なステップで着地原価を見積もります。",
+        steps: {
+          one: {
+            title: "出荷情報を入力",
+            description: "出発地、目的地、貨物、輸送の詳細を入力します。",
+          },
+          two: {
+            title: "コストを追加",
+            description:
+              "フレート、保険、関税、ハンドリング、その他の適用コストを追加します。",
+          },
+          three: {
+            title: "着地原価を計算",
+            description:
+              "Frevityが入力された情報をまとめ、明確な着地原価の見積もりを表示します。",
+          },
         },
       },
     },
