@@ -1,0 +1,14 @@
+{
+  "extends": "../web/tsconfig.json",
+  "compilerOptions": {
+    "composite": false,
+    "noEmit": true,
+    "baseUrl": "./",
+    "paths": {
+      "@/lib/calculation/*": ["../web/lib/calculation/*"],
+      "@/types/*": ["../web/types/*"]
+    }
+  },
+  "include": ["unit/**/*.ts"],
+  "exclude": ["dist", "node_modules"]
+}
