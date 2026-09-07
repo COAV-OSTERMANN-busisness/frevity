@@ -122,12 +122,12 @@ strong {
 }
 
 a {
-  color: var(--brand-primary);
+  color: var(--surface);
   text-decoration: none;
 }
 
 a:hover {
-  color: var(--brand-primary-dark);
+  color: var(--border);
 }
 
 button,

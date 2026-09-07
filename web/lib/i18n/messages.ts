@@ -18,9 +18,25 @@ export const messages = {
     landing: {
       hero: {
         badge: "Precise. Fast. Reliable.",
-        title: "Calculate with confidence.",
+        imageAlt:
+          "Cargo containers at a shipping port, representing logistics and freight.",
+        title: "Know the real cost of moving your cargo.",
         description:
-          "Frevity provides a clear and reliable calculation experience designed for precision, speed, and consistency.",
+          "Calculate your landed cost with a clear and consistent freight calculation workflow.",
+        cta: "Calculate Landed Cost",
+        summary: {
+          title: "Landed Cost Summary",
+          freight: "Freight",
+          insurance: "Insurance",
+          customs: "Customs",
+          handling: "Handling",
+          total: "Total",
+          freightValue: "$1,200.00",
+          insuranceValue: "$180.00",
+          customsValue: "$350.00",
+          handlingValue: "$90.00",
+          totalValue: "$1,820.00",
+        },
       },
     },
   },
@@ -44,9 +60,25 @@ export const messages = {
     landing: {
       hero: {
         badge: "Preciso. Rápido. Confiable.",
-        title: "Calcula con confianza.",
+        imageAlt:
+          "Contenedores de carga en un puerto marítimo, representando logística y flete.",
+        title: "Conoce el costo real de mover tu carga.",
         description:
-          "Frevity ofrece una experiencia de cálculo clara y confiable diseñada para brindar precisión, velocidad y consistencia.",
+          "Calcula tu costo aterrizado con un flujo de cálculo de flete claro y consistente.",
+        cta: "Calcular Costo Aterrizado",
+        summary: {
+          title: "Resumen de Costo Aterrizado",
+          freight: "Flete",
+          insurance: "Seguro",
+          customs: "Aduanas",
+          handling: "Manipulación",
+          total: "Total",
+          freightValue: "€1,200.00",
+          insuranceValue: "€180.00",
+          customsValue: "€350.00",
+          handlingValue: "€90.00",
+          totalValue: "€1,820.00",
+        },
       },
     },
   },
@@ -70,9 +102,25 @@ export const messages = {
     landing: {
       hero: {
         badge: "Preciso. Rápido. Confiável.",
-        title: "Calcule com confiança.",
+        imageAlt:
+          "Contêineres de carga em um porto, representando logística e frete.",
+        title: "Saiba o custo real de movimentar sua carga.",
         description:
-          "A Frevity oferece uma experiência de cálculo clara e confiável, desenvolvida para proporcionar precisão, velocidade e consistência.",
+          "Calcule seu custo aterrissado com um fluxo de cálculo de frete claro e consistente.",
+        cta: "Calcular Custo Aterrissado",
+        summary: {
+          title: "Resumo do Custo Aterrissado",
+          freight: "Frete",
+          insurance: "Seguro",
+          customs: "Alfândega",
+          handling: "Manuseio",
+          total: "Total",
+          freightValue: "R$ 1.200,00",
+          insuranceValue: "R$ 180,00",
+          customsValue: "R$ 350,00",
+          handlingValue: "R$ 90,00",
+          totalValue: "R$ 1.820,00",
+        },
       },
     },
   },
@@ -96,9 +144,24 @@ export const messages = {
     landing: {
       hero: {
         badge: "正確。高速。信頼性。",
-        title: "自信を持って計算できます。",
+        imageAlt: "港の貨物コンテナ。物流とフレートを表現。",
+        title: "貨物を動かす本当のコストを知る。",
         description:
-          "Frevityは、正確性、速度、一貫性を重視した、明確で信頼性の高い計算体験を提供します。",
+          "明確で一貫したフレート計算ワークフローで着荷コストを計算します。",
+        cta: "着荷コストを計算",
+        summary: {
+          title: "着荷コストサマリー",
+          freight: "フレート",
+          insurance: "保険",
+          customs: "関税",
+          handling: "ハンドリング",
+          total: "合計",
+          freightValue: "¥1,200",
+          insuranceValue: "¥180",
+          customsValue: "¥350",
+          handlingValue: "¥90",
+          totalValue: "¥1,820",
+        },
       },
     },
   },
