@@ -20,7 +20,7 @@ export const messages = {
         badge: "Precise. Fast. Reliable.",
         imageAlt:
           "Cargo containers at a shipping port, representing logistics and freight.",
-        title: "Know the real cost of moving your cargo.",
+        title: "Simulate your cargo transport cost.",
         description:
           "Calculate your landed cost with a clear and consistent freight calculation workflow.",
         cta: "Calculate Landed Cost",
@@ -60,6 +60,44 @@ export const messages = {
           },
         },
       },
+
+      features: {
+        title: "Built for clearer freight decisions",
+        description:
+          "Frevity brings the key logistics information together in one clear workflow.",
+        items: {
+          one: {
+            title: "Freight calculation",
+            description:
+              "Calculate freight costs using the shipment information you provide.",
+          },
+          two: {
+            title: "Clear cost breakdown",
+            description:
+              "View freight, insurance, customs, handling and other applicable costs separately.",
+          },
+          three: {
+            title: "Multi-market support",
+            description:
+              "Work with supported national markets and international shipments.",
+          },
+          four: {
+            title: "Logistics insight",
+            description:
+              "Understand logistics costs in relation to the declared cargo value.",
+          },
+          five: {
+            title: "Reality Score",
+            description:
+              "Use a planning indicator to understand the completeness of the available shipment information.",
+          },
+          six: {
+            title: "Flexible shipment inputs",
+            description:
+              "Provide cargo, transport and cost information according to your shipment.",
+          },
+        },
+      },
     },
   },
 
@@ -84,7 +122,7 @@ export const messages = {
         badge: "Preciso. Rápido. Confiable.",
         imageAlt:
           "Contenedores de carga en un puerto marítimo, representando logística y flete.",
-        title: "Conoce el costo real de mover tu carga.",
+        title: "Simula el costo de transporte de tu carga.",
         description:
           "Calcula tu costo puesto en destino con un flujo de cálculo de flete claro y consistente.",
         cta: "Calcular Costo Puesto en Destino",
@@ -124,6 +162,44 @@ export const messages = {
           },
         },
       },
+
+      features: {
+        title: "Diseñado para decisiones de flete más claras",
+        description:
+          "Frevity reúne la información logística clave en un flujo claro.",
+        items: {
+          one: {
+            title: "Cálculo de flete",
+            description:
+              "Calcula los costos de flete utilizando la información del envío que proporcionas.",
+          },
+          two: {
+            title: "Desglose claro de costos",
+            description:
+              "Consulta por separado el flete, seguro, aduanas, manipulación y otros costos aplicables.",
+          },
+          three: {
+            title: "Soporte para múltiples mercados",
+            description:
+              "Trabaja con mercados nacionales compatibles y envíos internacionales.",
+          },
+          four: {
+            title: "Visión de los costos logísticos",
+            description:
+              "Comprende los costos logísticos en relación con el valor declarado de la carga.",
+          },
+          five: {
+            title: "Reality Score",
+            description:
+              "Utiliza un indicador de planificación para comprender la integridad de la información disponible del envío.",
+          },
+          six: {
+            title: "Datos de envío flexibles",
+            description:
+              "Proporciona información de carga, transporte y costos según tu envío.",
+          },
+        },
+      },
     },
   },
 
@@ -148,7 +224,7 @@ export const messages = {
         badge: "Preciso. Rápido. Confiável.",
         imageAlt:
           "Contêineres de carga em um porto, representando logística e frete.",
-        title: "Saiba o custo real de movimentar sua carga.",
+        title: "Simule o custo de transporte da sua carga.",
         description:
           "Calcule seu frete com um fluxo de cálculo claro e consistente.",
         cta: "Calcular Frete",
@@ -188,6 +264,43 @@ export const messages = {
           },
         },
       },
+      features: {
+        title: "Feito para decisões de frete mais claras",
+        description:
+          "O Frevity reúne as principais informações logísticas em um fluxo claro.",
+        items: {
+          one: {
+            title: "Cálculo de frete",
+            description:
+              "Calcule o frete usando as informações da remessa que você fornecer.",
+          },
+          two: {
+            title: "Detalhamento claro dos custos",
+            description:
+              "Visualize separadamente frete, seguro, alfândega, manuseio e outros custos aplicáveis.",
+          },
+          three: {
+            title: "Suporte a múltiplos mercados",
+            description:
+              "Trabalhe com mercados nacionais compatíveis e remessas internacionais.",
+          },
+          four: {
+            title: "Visão dos custos logísticos",
+            description:
+              "Entenda os custos logísticos em relação ao valor declarado da carga.",
+          },
+          five: {
+            title: "Reality Score",
+            description:
+              "Use um indicador de planejamento para entender a completude das informações disponíveis da remessa.",
+          },
+          six: {
+            title: "Dados flexíveis da remessa",
+            description:
+              "Informe dados de carga, transporte e custos de acordo com sua remessa.",
+          },
+        },
+      },
     },
   },
 
@@ -211,7 +324,7 @@ export const messages = {
       hero: {
         badge: "正確。高速。信頼性。",
         imageAlt: "港の貨物コンテナ。物流とフレートを表現。",
-        title: "貨物を動かす本当のコストを知る。",
+        title: "貨物の輸送コストをシミュレーション。",
         description:
           "明確で一貫したフレート計算ワークフローで着地原価を計算します。",
         cta: "着地原価を計算",
@@ -247,6 +360,40 @@ export const messages = {
             title: "着地原価を計算",
             description:
               "Frevityが入力された情報をまとめ、明確な着地原価の見積もりを表示します。",
+          },
+        },
+      },
+      features: {
+        title: "より明確な運賃判断のために",
+        description:
+          "Frevityは主要な物流情報を一つの明確なワークフローにまとめます。",
+        items: {
+          one: {
+            title: "運賃計算",
+            description: "入力した出荷情報を使用して運賃コストを計算します。",
+          },
+          two: {
+            title: "明確なコスト内訳",
+            description:
+              "フレート、保険、関税、ハンドリング、その他の適用コストを個別に確認できます。",
+          },
+          three: {
+            title: "複数市場に対応",
+            description: "対応する国内市場と国際輸送を扱えます。",
+          },
+          four: {
+            title: "物流コストの把握",
+            description: "申告された貨物価額に対する物流コストを把握できます。",
+          },
+          five: {
+            title: "Reality Score",
+            description:
+              "利用可能な出荷情報の充実度を把握するための計画指標として利用できます。",
+          },
+          six: {
+            title: "柔軟な出荷情報",
+            description:
+              "出荷内容に応じて貨物、輸送、コストの情報を入力できます。",
           },
         },
       },

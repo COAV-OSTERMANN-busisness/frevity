@@ -3,6 +3,7 @@
 import { useI18n } from "@/components/providers/i18n";
 import { Hero } from "./hero";
 import { HowItWorks } from "./how-it-works";
+import { Features } from "./features";
 
 export function HomeContent() {
   const { locale } = useI18n();
@@ -12,6 +13,8 @@ export function HomeContent() {
       <Hero locale={locale} />
 
       <HowItWorks locale={locale} />
+
+      <Features locale={locale} />
     </div>
   );
 }
