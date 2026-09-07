@@ -6,6 +6,7 @@ import { HowItWorks } from "./how-it-works";
 import { Features } from "./features";
 import { GlobalCoverage } from "./global-coverage";
 import { FAQ } from "./faq";
+import { CTA } from "./cta";
 
 export function HomeContent() {
   const { locale } = useI18n();
@@ -21,6 +22,8 @@ export function HomeContent() {
       <GlobalCoverage locale={locale} />
 
       <FAQ locale={locale} />
+
+      <CTA locale={locale} />
     </div>
   );
 }

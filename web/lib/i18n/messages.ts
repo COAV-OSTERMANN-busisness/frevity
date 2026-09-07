@@ -159,6 +159,14 @@ export const messages = {
           },
         },
       },
+      cta: {
+        title: "Ready to simulate your transportation costs?",
+        description:
+          "Use Frevity to estimate freight and logistics costs for your shipment scenario before making transportation decisions.",
+        button: "Start Freight Simulation",
+        imageAlt:
+          "Cargo containers and cranes at a shipping port, representing freight cost simulation and logistics.",
+      },
     },
   },
 
@@ -320,6 +328,15 @@ export const messages = {
               "No. Frevity proporciona una estimación para planificación y análisis. El resultado no es una cotización de un transportista, una confirmación de reserva ni un cálculo aduanero oficial.",
           },
         },
+      },
+
+      cta: {
+        title: "¿Listo para simular tus costos de transporte?",
+        description:
+          "Usa Frevity para estimar los costos de flete y logística de tu escenario de envío antes de tomar decisiones de transporte.",
+        button: "Iniciar Simulación de Flete",
+        imageAlt:
+          "Contenedores de carga y grúas en un puerto, representando la simulación de costos de flete y logística.",
       },
     },
   },
@@ -483,6 +500,14 @@ export const messages = {
           },
         },
       },
+      cta: {
+        title: "Pronto para simular seus custos de transporte?",
+        description:
+          "Use o Frevity para estimar os custos de frete e logística da sua remessa antes de tomar decisões de transporte.",
+        button: "Iniciar Simulação de Frete",
+        imageAlt:
+          "Contêineres de carga e guindastes em um porto, representando simulação de custos de frete e logística.",
+      },
     },
   },
 
@@ -639,6 +664,15 @@ export const messages = {
               "いいえ。Frevityは計画や分析のための見積もりを提供します。結果は運送会社の正式な見積もり、予約確認、または公式な税関計算ではありません。",
           },
         },
+      },
+
+      cta: {
+        title: "輸送コストをシミュレーションしませんか？",
+        description:
+          "Frevityを使って、輸送の意思決定を行う前に、出荷シナリオのフレートと物流コストを見積もることができます。",
+        button: "フレートシミュレーションを開始",
+        imageAlt:
+          "港の貨物コンテナとクレーン。フレートコストのシミュレーションと物流を表現。",
       },
     },
   },
