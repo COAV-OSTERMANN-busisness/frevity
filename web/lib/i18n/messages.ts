@@ -127,6 +127,38 @@ export const messages = {
         },
         note: "International shipments are presented in USD in the MVP. Coverage depends on the supported markets configured by Frevity.",
       },
+
+      faq: {
+        title: "Frequently asked questions",
+        description: "Learn what Frevity is and how the simulator works.",
+        items: {
+          one: {
+            question: "Is Frevity a transportation company?",
+            answer:
+              "No. Frevity is a logistics cost simulator. It does not transport, book or operate shipments. Frevity helps you estimate transportation and logistics costs so you can better understand a shipment scenario.",
+          },
+          two: {
+            question: "Is Frevity free?",
+            answer:
+              "Yes. Frevity is 100% free to use for freight and logistics cost simulation.",
+          },
+          three: {
+            question: "Who is Frevity for?",
+            answer:
+              "Frevity is useful for industry, transportation companies, logistics and supply chain professionals, purchasing teams, logistics students and other users who need a clearer view of transportation costs.",
+          },
+          four: {
+            question: "What does Frevity simulate?",
+            answer:
+              "Frevity simulates transportation and logistics costs based on the shipment information you provide, helping you estimate the overall cost of a scenario.",
+          },
+          five: {
+            question: "Is the Frevity result a final quotation?",
+            answer:
+              "No. Frevity provides an estimate for planning and analysis. The result is not a carrier quotation, booking confirmation or official customs calculation.",
+          },
+        },
+      },
     },
   },
 
@@ -256,6 +288,38 @@ export const messages = {
           },
         },
         note: "Los envíos internacionales se presentan en USD en el MVP. La cobertura depende de los mercados compatibles configurados por Frevity.",
+      },
+
+      faq: {
+        title: "Preguntas frecuentes",
+        description: "Conoce qué es Frevity y cómo funciona el simulador.",
+        items: {
+          one: {
+            question: "¿Frevity es una empresa de transporte?",
+            answer:
+              "No. Frevity es un simulador de costos logísticos. No transporta, reserva ni opera envíos. Frevity te ayuda a estimar los costos de transporte y logística para comprender mejor un escenario de envío.",
+          },
+          two: {
+            question: "¿Frevity es gratuito?",
+            answer:
+              "Sí. Frevity es 100% gratuito para simular costos de flete y logística.",
+          },
+          three: {
+            question: "¿Para quién está indicado Frevity?",
+            answer:
+              "Frevity es útil para la industria, empresas de transporte, profesionales de logística y cadena de suministro, equipos de compras, estudiantes de logística y otros usuarios que necesitan una visión más clara de los costos de transporte.",
+          },
+          four: {
+            question: "¿Qué simula Frevity?",
+            answer:
+              "Frevity simula costos de transporte y logística a partir de la información del envío que proporcionas, ayudándote a estimar el costo general de un escenario.",
+          },
+          five: {
+            question: "¿El resultado de Frevity es una cotización final?",
+            answer:
+              "No. Frevity proporciona una estimación para planificación y análisis. El resultado no es una cotización de un transportista, una confirmación de reserva ni un cálculo aduanero oficial.",
+          },
+        },
       },
     },
   },
@@ -387,6 +451,38 @@ export const messages = {
         },
         note: "As remessas internacionais são apresentadas em USD no MVP. A cobertura depende dos mercados compatíveis configurados pelo Frevity.",
       },
+
+      faq: {
+        title: "Perguntas frequentes",
+        description: "Entenda o que é o Frevity e como funciona o simulador.",
+        items: {
+          one: {
+            question: "O Frevity é uma transportadora?",
+            answer:
+              "Não. O Frevity é um simulador de custos logísticos. Ele não transporta, reserva ou opera remessas. O Frevity ajuda você a estimar custos de transporte e logística para entender melhor um cenário de envio.",
+          },
+          two: {
+            question: "O Frevity é gratuito?",
+            answer:
+              "Sim. O Frevity é 100% gratuito para simulação de custos de frete e logística.",
+          },
+          three: {
+            question: "Para quem o Frevity é mais indicado?",
+            answer:
+              "O Frevity é indicado para indústrias, transportadoras, profissionais de logística e cadeia de suprimentos, equipes de compras, estudantes de logística e outras pessoas que precisam de uma visão mais clara dos custos de transporte.",
+          },
+          four: {
+            question: "O que o Frevity simula?",
+            answer:
+              "O Frevity simula custos de transporte e logística com base nas informações da remessa que você fornecer, ajudando a estimar o custo geral de um cenário.",
+          },
+          five: {
+            question: "O resultado do Frevity é uma cotação final?",
+            answer:
+              "Não. O Frevity fornece uma estimativa para planejamento e análise. O resultado não é uma cotação de transportadora, confirmação de contratação ou cálculo oficial de alfândega.",
+          },
+        },
+      },
     },
   },
 
@@ -510,6 +606,39 @@ export const messages = {
           },
         },
         note: "MVPでは国際輸送をUSDで表示します。対応範囲はFrevityが設定する対応市場によって異なります。",
+      },
+
+      faq: {
+        title: "よくある質問",
+        description:
+          "Frevityとは何か、シミュレーターがどのように機能するかをご紹介します。",
+        items: {
+          one: {
+            question: "Frevityは運送会社ですか？",
+            answer:
+              "いいえ。Frevityは物流コストのシミュレーターです。貨物の輸送、予約、運行を行う会社ではありません。Frevityは輸送や物流のコストを見積もり、出荷シナリオを理解するための支援をします。",
+          },
+          two: {
+            question: "Frevityは無料ですか？",
+            answer:
+              "はい。Frevityはフレートおよび物流コストのシミュレーションを100%無料で利用できます。",
+          },
+          three: {
+            question: "Frevityは誰に向いていますか？",
+            answer:
+              "Frevityは、製造業、運送会社、物流・サプライチェーン担当者、購買担当者、物流を学ぶ学生など、輸送コストをより明確に把握したい方に適しています。",
+          },
+          four: {
+            question: "Frevityでは何をシミュレーションできますか？",
+            answer:
+              "Frevityは、入力された出荷情報をもとに輸送・物流コストをシミュレーションし、シナリオ全体のコストを見積もるために利用できます。",
+          },
+          five: {
+            question: "Frevityの結果は最終見積もりですか？",
+            answer:
+              "いいえ。Frevityは計画や分析のための見積もりを提供します。結果は運送会社の正式な見積もり、予約確認、または公式な税関計算ではありません。",
+          },
+        },
       },
     },
   },
