@@ -2,6 +2,9 @@ import type { Money } from "./cargo";
 
 /**
  * Breakdown of the calculated logistics costs.
+ *
+ * Individual components remain optional because
+ * not every calculation requires every cost category.
  */
 export interface CalculationBreakdown {
   /**
@@ -41,27 +44,57 @@ export interface CalculationBreakdown {
 }
 
 /**
- * Final calculation result.
+ * Planning indicator for the reliability of the estimation.
+ *
+ * This is not an official customs, tax, legal,
+ * carrier, or guaranteed landed-cost classification.
+ */
+export type RealityScore = "LOW" | "MEDIUM" | "HIGH";
+
+/**
+ * Final result produced by the landed cost calculation engine.
+ *
+ * The result contains both the detailed cost breakdown
+ * and the derived metrics required by the application.
  */
 export interface CalculationResult {
   /**
-   * Currency used for the result.
+   * Currency used for the calculated monetary values.
    */
   currency: string;
 
   /**
-   * Individual cost components.
+   * Individual cost components used in the calculation.
    */
   breakdown: CalculationBreakdown;
 
   /**
-   * Final calculated amount.
+   * Total landed cost.
    */
-  total: Money;
+  totalLandedCost: Money;
 
   /**
-   * Optional timestamp indicating when
-   * the calculation was performed.
+   * Landed cost per kilogram.
+   */
+  costPerKg: Money;
+
+  /**
+   * Landed cost per cargo unit.
+   */
+  costPerUnit: Money;
+
+  /**
+   * Logistics cost expressed as a percentage.
+   */
+  logisticsPercentage: number;
+
+  /**
+   * Planning indicator representing the estimation reliability.
+   */
+  realityScore: RealityScore;
+
+  /**
+   * Timestamp indicating when the calculation was performed.
    */
   calculatedAt?: string;
 
