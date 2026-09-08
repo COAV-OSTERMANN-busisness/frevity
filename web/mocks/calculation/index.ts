@@ -1,0 +1,1 @@
+export { mockCalculationResult } from "./calculationResult.mock";
