@@ -41,7 +41,8 @@ export const messages = {
 
       howItWorks: {
         title: "How Frevity works",
-        description: "Estimate your landed cost in three simple steps.",
+        description:
+          "Simulate your transportation costs in a few simple steps.",
         steps: {
           one: {
             title: "Enter your shipment",
@@ -54,10 +55,15 @@ export const messages = {
               "Include freight, insurance, customs, handling and other applicable costs.",
           },
           three: {
-            title: "Calculate your landed cost",
+            title: "Simulate your transport cost",
             description:
-              "Frevity combines the provided information into a clear landed cost estimate.",
+              "Frevity combines the information provided and presents a clear cost estimate.",
           },
+        },
+        result: {
+          title: "A clear estimate for your decision",
+          description:
+            "Use the Frevity simulation to get a better view of your transportation and logistics costs.",
         },
       },
 
@@ -212,7 +218,7 @@ export const messages = {
 
       howItWorks: {
         title: "Cómo funciona Frevity",
-        description: "Estima tu costo puesto en destino en tres simples pasos.",
+        description: "Simula tus costos de transporte en unos simples pasos.",
         steps: {
           one: {
             title: "Ingresa tu envío",
@@ -225,10 +231,15 @@ export const messages = {
               "Incluye flete, seguro, aduanas, manipulación y otros costos aplicables.",
           },
           three: {
-            title: "Calcula tu costo puesto en destino",
+            title: "Simula tu costo de transporte",
             description:
-              "Frevity combina la información proporcionada en una estimación clara del costo puesto en destino.",
+              "Frevity combina la información proporcionada y presenta una estimación clara de los costos.",
           },
+        },
+        result: {
+          title: "Una estimación clara para tu decisión",
+          description:
+            "Usa la simulación de Frevity para comprender mejor tus costos de transporte y logística.",
         },
       },
 
@@ -383,10 +394,11 @@ export const messages = {
 
       howItWorks: {
         title: "Como o Frevity funciona",
-        description: "Calcule seu frete em três passos simples.",
+        description:
+          "Simule seus custos de transporte em poucos passos simples.",
         steps: {
           one: {
-            title: "Informe seu envio",
+            title: "Informe sua remessa",
             description:
               "Informe origem, destino, carga e detalhes do transporte.",
           },
@@ -396,10 +408,15 @@ export const messages = {
               "Inclua frete, seguro, alfândega, manuseio e outros custos aplicáveis.",
           },
           three: {
-            title: "Calcule seu frete",
+            title: "Simule seu custo de transporte",
             description:
-              "O Frevity combina as informações fornecidas em um cálculo claro de frete.",
+              "O Frevity combina as informações fornecidas e apresenta uma estimativa clara dos custos.",
           },
+        },
+        result: {
+          title: "Uma estimativa clara para sua decisão",
+          description:
+            "Use a simulação do Frevity para ter uma visão melhor dos seus custos de transporte e logística.",
         },
       },
       features: {
@@ -552,7 +569,7 @@ export const messages = {
 
       howItWorks: {
         title: "Frevityの仕組み",
-        description: "3つの簡単なステップで着地原価を見積もります。",
+        description: "簡単なステップで輸送コストをシミュレーションできます。",
         steps: {
           one: {
             title: "出荷情報を入力",
@@ -564,10 +581,15 @@ export const messages = {
               "フレート、保険、関税、ハンドリング、その他の適用コストを追加します。",
           },
           three: {
-            title: "着地原価を計算",
+            title: "輸送コストをシミュレーション",
             description:
-              "Frevityが入力された情報をまとめ、明確な着地原価の見積もりを表示します。",
+              "Frevityが入力された情報をまとめ、明確なコスト見積もりを表示します。",
           },
+        },
+        result: {
+          title: "意思決定のための明確な見積もり",
+          description:
+            "Frevityのシミュレーションを使って、輸送・物流コストをより明確に把握できます。",
         },
       },
       features: {
