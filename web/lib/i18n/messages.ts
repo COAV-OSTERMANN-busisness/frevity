@@ -11,7 +11,7 @@ export const messages = {
       footer: {
         home: "Home",
         calculator: "Calculator",
-        copyright: "© 2026 Frevity. All rights reserved.",
+        copyright: "© 2026 freevity. All rights reserved.",
         navigationTitle: "Navigation",
         socialTitle: "Follow us on social media",
       },
@@ -50,7 +50,7 @@ export const messages = {
       },
 
       howItWorks: {
-        title: "How Frevity works",
+        title: "How freevity works",
         description:
           "Simulate your transportation costs in a few simple steps.",
         steps: {
@@ -67,20 +67,20 @@ export const messages = {
           three: {
             title: "Simulate your transport cost",
             description:
-              "Frevity combines the information provided and presents a clear cost estimate.",
+              "freevity combines the information provided and presents a clear cost estimate.",
           },
         },
         result: {
           title: "A clear estimate for your decision",
           description:
-            "Use the Frevity simulation to get a better view of your transportation and logistics costs.",
+            "Use the freevity simulation to get a better view of your transportation and logistics costs.",
         },
       },
 
       features: {
         title: "Built for clearer freight decisions",
         description:
-          "Frevity brings the key logistics information together in one clear workflow.",
+          "freevity brings the key logistics information together in one clear workflow.",
         items: {
           one: {
             title: "Freight calculation",
@@ -118,7 +118,7 @@ export const messages = {
       globalCoverage: {
         title: "Simulate freight costs across supported markets",
         description:
-          "Frevity helps you estimate transportation costs for supported national markets and international shipments.",
+          "freevity helps you estimate transportation costs for supported national markets and international shipments.",
         markets: {
           brazil: {
             title: "Brazil",
@@ -141,47 +141,76 @@ export const messages = {
               "Simulate domestic transportation costs using Japanese yen (JPY).",
           },
         },
-        note: "International shipments are presented in USD in the MVP. Coverage depends on the supported markets configured by Frevity.",
+        note: "International shipments are presented in USD in the MVP. Coverage depends on the supported markets configured by freevity.",
       },
 
       faq: {
         title: "Frequently asked questions",
-        description: "Learn what Frevity is and how the simulator works.",
+        description: "Learn what freevity is and how the simulator works.",
         items: {
           one: {
-            question: "Is Frevity a transportation company?",
+            question: "Is freevity a transportation company?",
             answer:
-              "No. Frevity is a logistics cost simulator. It does not transport, book or operate shipments. Frevity helps you estimate transportation and logistics costs so you can better understand a shipment scenario.",
+              "No. freevity is a logistics cost simulator. It does not transport, book or operate shipments. freevity helps you estimate transportation and logistics costs so you can better understand a shipment scenario.",
           },
           two: {
-            question: "Is Frevity free?",
+            question: "Is freevity free?",
             answer:
-              "Yes. Frevity is 100% free to use for freight and logistics cost simulation.",
+              "Yes. freevity is 100% free to use for freight and logistics cost simulation.",
           },
           three: {
-            question: "Who is Frevity for?",
+            question: "Who is freevity for?",
             answer:
-              "Frevity is useful for industry, transportation companies, logistics and supply chain professionals, purchasing teams, logistics students and other users who need a clearer view of transportation costs.",
+              "freevity is useful for industry, transportation companies, logistics and supply chain professionals, purchasing teams, logistics students and other users who need a clearer view of transportation costs.",
           },
           four: {
-            question: "What does Frevity simulate?",
+            question: "What does freevity simulate?",
             answer:
-              "Frevity simulates transportation and logistics costs based on the shipment information you provide, helping you estimate the overall cost of a scenario.",
+              "freevity simulates transportation and logistics costs based on the shipment information you provide, helping you estimate the overall cost of a scenario.",
           },
           five: {
-            question: "Is the Frevity result a final quotation?",
+            question: "Is the freevity result a final quotation?",
             answer:
-              "No. Frevity provides an estimate for planning and analysis. The result is not a carrier quotation, booking confirmation or official customs calculation.",
+              "No. freevity provides an estimate for planning and analysis. The result is not a carrier quotation, booking confirmation or official customs calculation.",
           },
         },
       },
       cta: {
         title: "Ready to simulate your transportation costs?",
         description:
-          "Use Frevity to estimate freight and logistics costs for your shipment scenario before making transportation decisions.",
+          "Use freevity to estimate freight and logistics costs for your shipment scenario before making transportation decisions.",
         button: "Start Freight Simulation",
         imageAlt:
           "Cargo containers and cranes at a shipping port, representing freight cost simulation and logistics.",
+      },
+    },
+    calculator: {
+      advertising: {
+        label: "Advertisement",
+      },
+      form: {
+        title: "Freight Cost Simulator",
+        description:
+          "Enter your shipment information to estimate transportation and logistics costs.",
+        origin: "Origin",
+        destination: "Destination",
+        transportMode: "Transport mode",
+        road: "Road",
+        air: "Air",
+        maritime: "Maritime",
+        quantity: "Quantity",
+        weight: "Weight",
+        cargoValue: "Declared cargo value",
+        freight: "Freight",
+        insurance: "Insurance",
+        customs: "Customs",
+        handling: "Handling",
+        localTransport: "Local transport",
+        otherCosts: "Other costs",
+        weightUnitKg: "kg",
+        weightUnitG: "g",
+        weightUnitLb: "lb",
+        submit: "Simulate freight cost",
       },
     },
   },
@@ -198,7 +227,7 @@ export const messages = {
       footer: {
         home: "Inicio",
         calculator: "Calculadora",
-        copyright: "© 2026 Frevity. Todos los derechos reservados.",
+        copyright: "© 2026 freevity. Todos los derechos reservados.",
         navigationTitle: "Navegación",
         socialTitle: "Síguenos en nuestras redes sociales",
       },
@@ -238,7 +267,7 @@ export const messages = {
       },
 
       howItWorks: {
-        title: "Cómo funciona Frevity",
+        title: "Cómo funciona freevity",
         description: "Simula tus costos de transporte en unos simples pasos.",
         steps: {
           one: {
@@ -254,20 +283,20 @@ export const messages = {
           three: {
             title: "Simula tu costo de transporte",
             description:
-              "Frevity combina la información proporcionada y presenta una estimación clara de los costos.",
+              "freevity combina la información proporcionada y presenta una estimación clara de los costos.",
           },
         },
         result: {
           title: "Una estimación clara para tu decisión",
           description:
-            "Usa la simulación de Frevity para comprender mejor tus costos de transporte y logística.",
+            "Usa la simulación de freevity para comprender mejor tus costos de transporte y logística.",
         },
       },
 
       features: {
         title: "Diseñado para decisiones de flete más claras",
         description:
-          "Frevity reúne la información logística clave en un flujo claro.",
+          "freevity reúne la información logística clave en un flujo claro.",
         items: {
           one: {
             title: "Cálculo de flete",
@@ -304,7 +333,7 @@ export const messages = {
       globalCoverage: {
         title: "Simula costos de flete en mercados compatibles",
         description:
-          "Frevity te ayuda a estimar los costos de transporte en mercados nacionales compatibles y envíos internacionales.",
+          "freevity te ayuda a estimar los costos de transporte en mercados nacionales compatibles y envíos internacionales.",
         markets: {
           brazil: {
             title: "Brasil",
@@ -327,37 +356,37 @@ export const messages = {
               "Simula los costos de transporte nacional utilizando yenes japoneses (JPY).",
           },
         },
-        note: "Los envíos internacionales se presentan en USD en el MVP. La cobertura depende de los mercados compatibles configurados por Frevity.",
+        note: "Los envíos internacionales se presentan en USD en el MVP. La cobertura depende de los mercados compatibles configurados por freevity.",
       },
 
       faq: {
         title: "Preguntas frecuentes",
-        description: "Conoce qué es Frevity y cómo funciona el simulador.",
+        description: "Conoce qué es freevity y cómo funciona el simulador.",
         items: {
           one: {
-            question: "¿Frevity es una empresa de transporte?",
+            question: "¿freevity es una empresa de transporte?",
             answer:
-              "No. Frevity es un simulador de costos logísticos. No transporta, reserva ni opera envíos. Frevity te ayuda a estimar los costos de transporte y logística para comprender mejor un escenario de envío.",
+              "No. freevity es un simulador de costos logísticos. No transporta, reserva ni opera envíos. freevity te ayuda a estimar los costos de transporte y logística para comprender mejor un escenario de envío.",
           },
           two: {
-            question: "¿Frevity es gratuito?",
+            question: "¿freevity es gratuito?",
             answer:
-              "Sí. Frevity es 100% gratuito para simular costos de flete y logística.",
+              "Sí. freevity es 100% gratuito para simular costos de flete y logística.",
           },
           three: {
-            question: "¿Para quién está indicado Frevity?",
+            question: "¿Para quién está indicado freevity?",
             answer:
-              "Frevity es útil para la industria, empresas de transporte, profesionales de logística y cadena de suministro, equipos de compras, estudiantes de logística y otros usuarios que necesitan una visión más clara de los costos de transporte.",
+              "freevity es útil para la industria, empresas de transporte, profesionales de logística y cadena de suministro, equipos de compras, estudiantes de logística y otros usuarios que necesitan una visión más clara de los costos de transporte.",
           },
           four: {
-            question: "¿Qué simula Frevity?",
+            question: "¿Qué simula freevity?",
             answer:
-              "Frevity simula costos de transporte y logística a partir de la información del envío que proporcionas, ayudándote a estimar el costo general de un escenario.",
+              "freevity simula costos de transporte y logística a partir de la información del envío que proporcionas, ayudándote a estimar el costo general de un escenario.",
           },
           five: {
-            question: "¿El resultado de Frevity es una cotización final?",
+            question: "¿El resultado de freevity es una cotización final?",
             answer:
-              "No. Frevity proporciona una estimación para planificación y análisis. El resultado no es una cotización de un transportista, una confirmación de reserva ni un cálculo aduanero oficial.",
+              "No. freevity proporciona una estimación para planificación y análisis. El resultado no es una cotización de un transportista, una confirmación de reserva ni un cálculo aduanero oficial.",
           },
         },
       },
@@ -365,10 +394,39 @@ export const messages = {
       cta: {
         title: "¿Listo para simular tus costos de transporte?",
         description:
-          "Usa Frevity para estimar los costos de flete y logística de tu escenario de envío antes de tomar decisiones de transporte.",
+          "Usa freevity para estimar los costos de flete y logística de tu escenario de envío antes de tomar decisiones de transporte.",
         button: "Iniciar Simulación de Flete",
         imageAlt:
           "Contenedores de carga y grúas en un puerto, representando la simulación de costos de flete y logística.",
+      },
+    },
+    calculator: {
+      advertising: {
+        label: "Publicidad",
+      },
+      form: {
+        title: "Simulador de Costos de Flete",
+        description:
+          "Ingresa la información de tu envío para estimar los costos de transporte y logística.",
+        origin: "Origen",
+        destination: "Destino",
+        transportMode: "Modal de transporte",
+        road: "Carretera",
+        air: "Aéreo",
+        maritime: "Marítimo",
+        quantity: "Cantidad",
+        weight: "Peso",
+        cargoValue: "Valor declarado de la carga",
+        freight: "Flete",
+        insurance: "Seguro",
+        customs: "Aduanas",
+        handling: "Manipulación",
+        localTransport: "Transporte local",
+        otherCosts: "Otros costos",
+        weightUnitKg: "kg",
+        weightUnitG: "g",
+        weightUnitLb: "lb",
+        submit: "Simular costo de flete",
       },
     },
   },
@@ -385,7 +443,7 @@ export const messages = {
       footer: {
         home: "Início",
         calculator: "Calculadora",
-        copyright: "© 2026 Frevity. Todos os direitos reservados.",
+        copyright: "© 2026 freevity. Todos os direitos reservados.",
         navigationTitle: "Navegação",
         socialTitle: "Siga-nos em nossas redes sociais",
       },
@@ -425,7 +483,7 @@ export const messages = {
       },
 
       howItWorks: {
-        title: "Como o Frevity funciona",
+        title: "Como o freevity funciona",
         description:
           "Simule seus custos de transporte em poucos passos simples.",
         steps: {
@@ -442,19 +500,19 @@ export const messages = {
           three: {
             title: "Simule seu custo de transporte",
             description:
-              "O Frevity combina as informações fornecidas e apresenta uma estimativa clara dos custos.",
+              "O freevity combina as informações fornecidas e apresenta uma estimativa clara dos custos.",
           },
         },
         result: {
           title: "Uma estimativa clara para sua decisão",
           description:
-            "Use a simulação do Frevity para ter uma visão melhor dos seus custos de transporte e logística.",
+            "Use a simulação do freevity para ter uma visão melhor dos seus custos de transporte e logística.",
         },
       },
       features: {
         title: "Feito para decisões de frete mais claras",
         description:
-          "O Frevity reúne as principais informações logísticas em um fluxo claro.",
+          "O freevity reúne as principais informações logísticas em um fluxo claro.",
         items: {
           one: {
             title: "Cálculo de frete",
@@ -492,7 +550,7 @@ export const messages = {
       globalCoverage: {
         title: "Simule custos de frete em mercados compatíveis",
         description:
-          "O Frevity ajuda você a estimar custos de transporte em mercados nacionais compatíveis e em remessas internacionais.",
+          "O freevity ajuda você a estimar custos de transporte em mercados nacionais compatíveis e em remessas internacionais.",
         markets: {
           brazil: {
             title: "Brasil",
@@ -515,47 +573,76 @@ export const messages = {
               "Simule custos de transporte nacional utilizando o iene japonês (JPY).",
           },
         },
-        note: "As remessas internacionais são apresentadas em USD no MVP. A cobertura depende dos mercados compatíveis configurados pelo Frevity.",
+        note: "As remessas internacionais são apresentadas em USD no MVP. A cobertura depende dos mercados compatíveis configurados pelo freevity.",
       },
 
       faq: {
         title: "Perguntas frequentes",
-        description: "Entenda o que é o Frevity e como funciona o simulador.",
+        description: "Entenda o que é o freevity e como funciona o simulador.",
         items: {
           one: {
-            question: "O Frevity é uma transportadora?",
+            question: "O freevity é uma transportadora?",
             answer:
-              "Não. O Frevity é um simulador de custos logísticos. Ele não transporta, reserva ou opera remessas. O Frevity ajuda você a estimar custos de transporte e logística para entender melhor um cenário de envio.",
+              "Não. O freevity é um simulador de custos logísticos. Ele não transporta, reserva ou opera remessas. O freevity ajuda você a estimar custos de transporte e logística para entender melhor um cenário de envio.",
           },
           two: {
-            question: "O Frevity é gratuito?",
+            question: "O freevity é gratuito?",
             answer:
-              "Sim. O Frevity é 100% gratuito para simulação de custos de frete e logística.",
+              "Sim. O freevity é 100% gratuito para simulação de custos de frete e logística.",
           },
           three: {
-            question: "Para quem o Frevity é mais indicado?",
+            question: "Para quem o freevity é mais indicado?",
             answer:
-              "O Frevity é indicado para indústrias, transportadoras, profissionais de logística e cadeia de suprimentos, equipes de compras, estudantes de logística e outras pessoas que precisam de uma visão mais clara dos custos de transporte.",
+              "O freevity é indicado para indústrias, transportadoras, profissionais de logística e cadeia de suprimentos, equipes de compras, estudantes de logística e outras pessoas que precisam de uma visão mais clara dos custos de transporte.",
           },
           four: {
-            question: "O que o Frevity simula?",
+            question: "O que o freevity simula?",
             answer:
-              "O Frevity simula custos de transporte e logística com base nas informações da remessa que você fornecer, ajudando a estimar o custo geral de um cenário.",
+              "O freevity simula custos de transporte e logística com base nas informações da remessa que você fornecer, ajudando a estimar o custo geral de um cenário.",
           },
           five: {
-            question: "O resultado do Frevity é uma cotação final?",
+            question: "O resultado do freevity é uma cotação final?",
             answer:
-              "Não. O Frevity fornece uma estimativa para planejamento e análise. O resultado não é uma cotação de transportadora, confirmação de contratação ou cálculo oficial de alfândega.",
+              "Não. O freevity fornece uma estimativa para planejamento e análise. O resultado não é uma cotação de transportadora, confirmação de contratação ou cálculo oficial de alfândega.",
           },
         },
       },
       cta: {
         title: "Pronto para simular seus custos de transporte?",
         description:
-          "Use o Frevity para estimar os custos de frete e logística da sua remessa antes de tomar decisões de transporte.",
+          "Use o freevity para estimar os custos de frete e logística da sua remessa antes de tomar decisões de transporte.",
         button: "Iniciar Simulação de Frete",
         imageAlt:
           "Contêineres de carga e guindastes em um porto, representando simulação de custos de frete e logística.",
+      },
+    },
+    calculator: {
+      advertising: {
+        label: "Publicidade",
+      },
+      form: {
+        title: "Simulador de Custos de Frete",
+        description:
+          "Informe os dados da sua remessa para estimar os custos de transporte e logística.",
+        origin: "Origem",
+        destination: "Destino",
+        transportMode: "Modal de transporte",
+        road: "Rodoviário",
+        air: "Aéreo",
+        maritime: "Marítimo",
+        quantity: "Quantidade",
+        weight: "Peso",
+        cargoValue: "Valor declarado da carga",
+        freight: "Frete",
+        insurance: "Seguro",
+        customs: "Alfândega",
+        handling: "Manuseio",
+        localTransport: "Transporte local",
+        otherCosts: "Outros custos",
+        weightUnitKg: "kg",
+        weightUnitG: "g",
+        weightUnitLb: "lb",
+        submit: "Simular custo de frete",
       },
     },
   },
@@ -572,7 +659,7 @@ export const messages = {
       footer: {
         home: "ホーム",
         calculator: "計算機",
-        copyright: "© 2026 Frevity. 無断転載・複製を禁じます。",
+        copyright: "© 2026 freevity. 無断転載・複製を禁じます。",
         navigationTitle: "ナビゲーション",
         socialTitle: "ソーシャルメディアでフォローする",
       },
@@ -611,7 +698,7 @@ export const messages = {
       },
 
       howItWorks: {
-        title: "Frevityの仕組み",
+        title: "freevityの仕組み",
         description: "簡単なステップで輸送コストをシミュレーションできます。",
         steps: {
           one: {
@@ -626,19 +713,19 @@ export const messages = {
           three: {
             title: "輸送コストをシミュレーション",
             description:
-              "Frevityが入力された情報をまとめ、明確なコスト見積もりを表示します。",
+              "freevityが入力された情報をまとめ、明確なコスト見積もりを表示します。",
           },
         },
         result: {
           title: "意思決定のための明確な見積もり",
           description:
-            "Frevityのシミュレーションを使って、輸送・物流コストをより明確に把握できます。",
+            "freevityのシミュレーションを使って、輸送・物流コストをより明確に把握できます。",
         },
       },
       features: {
         title: "より明確な運賃判断のために",
         description:
-          "Frevityは主要な物流情報を一つの明確なワークフローにまとめます。",
+          "freevityは主要な物流情報を一つの明確なワークフローにまとめます。",
         items: {
           one: {
             title: "運賃計算",
@@ -672,7 +759,7 @@ export const messages = {
       globalCoverage: {
         title: "対応市場で輸送コストをシミュレーション",
         description:
-          "Frevityは、対応する国内市場と国際輸送のコストを見積もるためのシミュレーションツールです。",
+          "freevityは、対応する国内市場と国際輸送のコストを見積もるためのシミュレーションツールです。",
         markets: {
           brazil: {
             title: "ブラジル",
@@ -695,38 +782,38 @@ export const messages = {
               "日本円（JPY）で国内輸送コストをシミュレーションできます。",
           },
         },
-        note: "MVPでは国際輸送をUSDで表示します。対応範囲はFrevityが設定する対応市場によって異なります。",
+        note: "MVPでは国際輸送をUSDで表示します。対応範囲はfreevityが設定する対応市場によって異なります。",
       },
 
       faq: {
         title: "よくある質問",
         description:
-          "Frevityとは何か、シミュレーターがどのように機能するかをご紹介します。",
+          "freevityとは何か、シミュレーターがどのように機能するかをご紹介します。",
         items: {
           one: {
-            question: "Frevityは運送会社ですか？",
+            question: "freevityは運送会社ですか？",
             answer:
-              "いいえ。Frevityは物流コストのシミュレーターです。貨物の輸送、予約、運行を行う会社ではありません。Frevityは輸送や物流のコストを見積もり、出荷シナリオを理解するための支援をします。",
+              "いいえ。freevityは物流コストのシミュレーターです。貨物の輸送、予約、運行を行う会社ではありません。freevityは輸送や物流のコストを見積もり、出荷シナリオを理解するための支援をします。",
           },
           two: {
-            question: "Frevityは無料ですか？",
+            question: "freevityは無料ですか？",
             answer:
-              "はい。Frevityはフレートおよび物流コストのシミュレーションを100%無料で利用できます。",
+              "はい。freevityはフレートおよび物流コストのシミュレーションを100%無料で利用できます。",
           },
           three: {
-            question: "Frevityは誰に向いていますか？",
+            question: "freevityは誰に向いていますか？",
             answer:
-              "Frevityは、製造業、運送会社、物流・サプライチェーン担当者、購買担当者、物流を学ぶ学生など、輸送コストをより明確に把握したい方に適しています。",
+              "freevityは、製造業、運送会社、物流・サプライチェーン担当者、購買担当者、物流を学ぶ学生など、輸送コストをより明確に把握したい方に適しています。",
           },
           four: {
-            question: "Frevityでは何をシミュレーションできますか？",
+            question: "freevityでは何をシミュレーションできますか？",
             answer:
-              "Frevityは、入力された出荷情報をもとに輸送・物流コストをシミュレーションし、シナリオ全体のコストを見積もるために利用できます。",
+              "freevityは、入力された出荷情報をもとに輸送・物流コストをシミュレーションし、シナリオ全体のコストを見積もるために利用できます。",
           },
           five: {
-            question: "Frevityの結果は最終見積もりですか？",
+            question: "freevityの結果は最終見積もりですか？",
             answer:
-              "いいえ。Frevityは計画や分析のための見積もりを提供します。結果は運送会社の正式な見積もり、予約確認、または公式な税関計算ではありません。",
+              "いいえ。freevityは計画や分析のための見積もりを提供します。結果は運送会社の正式な見積もり、予約確認、または公式な税関計算ではありません。",
           },
         },
       },
@@ -734,10 +821,38 @@ export const messages = {
       cta: {
         title: "輸送コストをシミュレーションしませんか？",
         description:
-          "Frevityを使って、輸送の意思決定を行う前に、出荷シナリオのフレートと物流コストを見積もることができます。",
+          "freevityを使って、輸送の意思決定を行う前に、出荷シナリオのフレートと物流コストを見積もることができます。",
         button: "フレートシミュレーションを開始",
         imageAlt:
           "港の貨物コンテナとクレーン。フレートコストのシミュレーションと物流を表現。",
+      },
+    },
+    calculator: {
+      advertising: {
+        label: "広告",
+      },
+      form: {
+        title: "運賃コストシミュレーター",
+        description: "輸送情報を入力して、輸送および物流コストを見積もります。",
+        origin: "出発地",
+        destination: "到着地",
+        transportMode: "輸送モード",
+        road: "陸上輸送",
+        air: "航空輸送",
+        maritime: "海上輸送",
+        quantity: "数量",
+        weight: "重量",
+        cargoValue: "申告貨物価格",
+        freight: "運賃",
+        insurance: "保険",
+        customs: "税関",
+        handling: "荷役",
+        localTransport: "国内輸送",
+        otherCosts: "その他の費用",
+        weightUnitKg: "kg",
+        weightUnitG: "g",
+        weightUnitLb: "lb",
+        submit: "運賃コストをシミュレーション",
       },
     },
   },
