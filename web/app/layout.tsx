@@ -20,11 +20,11 @@ const geistMono = Geist_Mono({
 
 const navigation = [
   {
-    label: "Home",
+    labelKey: "home",
     href: "/",
   },
   {
-    label: "Calculator",
+    labelKey: "calculator",
     href: "/calculator",
   },
 ] as const;

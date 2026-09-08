@@ -42,9 +42,10 @@ function NavigationLinks({ items, mobile = false }: NavigationLinksProps) {
           href={item.href}
           className={
             mobile
-              ? "rounded-lg px-4 py-3 text-sm font-medium text-[var(--color-text)] transition-colors hover:bg-[var(--color-background)] hover:text-[var(--color-primary)]"
+              ? "rounded-lg px-4 py-3 text-sm font-medium text-black transition-colors hover:bg-[var(--color-background)] hover:text-[var(--color-primary)]"
               : "text-sm font-medium text-[var(--color-text)] transition-colors hover:text-[var(--color-primary)]"
           }
+          style={{ color: "black" }}
         >
           {translations[item.labelKey]}
         </Link>
@@ -68,9 +69,10 @@ function PrimaryAction({
       href={action.href}
       className={
         mobile
-          ? "mt-2 rounded-lg bg-[var(--color-primary)] px-4 py-3 text-center text-sm font-semibold text-white transition-colors hover:bg-[var(--color-primary-dark)]"
+          ? "mt-2 rounded-lg bg-[var(--color-primary)] px-4 py-3 text-center text-sm font-semibold text-black transition-colors hover:bg-[var(--color-primary-dark)]"
           : "rounded-lg bg-[var(--color-primary)] px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[var(--color-primary-dark)]"
       }
+      style={{ color: "black" }}
     >
       {translations[action.labelKey]}
     </Link>
