@@ -17,6 +17,14 @@ export const messages = {
       },
     },
 
+    notFound: {
+      code: "404",
+      title: "Page not found",
+      description: "Sorry, we couldn't find the page you're looking for.",
+      backToHome: "← Back to home",
+      imageAlt: "Desert landscape with sand dunes under a bright sky.",
+    },
+
     landing: {
       hero: {
         badge: "Precise. Fast. Reliable.",
@@ -194,6 +202,15 @@ export const messages = {
         navigationTitle: "Navegación",
         socialTitle: "Síguenos en nuestras redes sociales",
       },
+    },
+
+    notFound: {
+      code: "404",
+      title: "Página no encontrada",
+      description:
+        "Lo sentimos, no pudimos encontrar la página que estás buscando.",
+      backToHome: "← Volver al inicio",
+      imageAlt: "Paisaje desértico con dunas de arena bajo un cielo luminoso.",
     },
 
     landing: {
@@ -374,6 +391,15 @@ export const messages = {
       },
     },
 
+    notFound: {
+      code: "404",
+      title: "Página não encontrada",
+      description:
+        "Desculpe, não conseguimos encontrar a página que você está procurando.",
+      backToHome: "← Voltar para o início",
+      imageAlt: "Paisagem desértica com dunas de areia sob um céu iluminado.",
+    },
+
     landing: {
       hero: {
         badge: "Preciso. Rápido. Confiável.",
@@ -550,6 +576,15 @@ export const messages = {
         navigationTitle: "ナビゲーション",
         socialTitle: "ソーシャルメディアでフォローする",
       },
+    },
+
+    notFound: {
+      code: "404",
+      title: "ページが見つかりません",
+      description:
+        "申し訳ありません。お探しのページを見つけることができませんでした。",
+      backToHome: "← ホームに戻る",
+      imageAlt: "明るい空の下に広がる砂丘の砂漠風景。",
     },
 
     landing: {
