@@ -7,12 +7,26 @@ import type { AdvertisingProps } from "@/types/advertising/Advertising.types";
 export function Advertising({
   provider,
   format,
+  imageUrl,
+  targetUrl,
   slot,
   campaignId,
   className = "",
 }: AdvertisingProps) {
   const { locale } = useI18n();
   const translations = messages[locale].calculator.advertising;
+
+  const advertisingContent = imageUrl ? (
+    <img
+      src={imageUrl}
+      alt={translations.label}
+      className="h-auto max-h-32 w-full object-contain"
+    />
+  ) : (
+    <span className="text-sm" style={{ color: "var(--color-muted)" }}>
+      {translations.label}
+    </span>
+  );
 
   return (
     <section
@@ -24,9 +38,19 @@ export function Advertising({
       className={`w-full ${className}`}
     >
       <div className="mx-auto flex min-h-24 w-full max-w-7xl items-center justify-center overflow-hidden rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)]">
-        <span className="text-sm" style={{ color: "var(--color-muted)" }}>
-          {translations.label}
-        </span>
+        {targetUrl ? (
+          <a
+            href={targetUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex w-full items-center justify-center"
+            aria-label={translations.label}
+          >
+            {advertisingContent}
+          </a>
+        ) : (
+          advertisingContent
+        )}
       </div>
     </section>
   );

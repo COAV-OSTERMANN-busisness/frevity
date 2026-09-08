@@ -9,6 +9,8 @@ export type AdvertisingFormat =
 export interface AdvertisingProps {
   provider: AdvertisingProvider;
   format: AdvertisingFormat;
+  imageUrl?: string;
+  targetUrl?: string;
   slot?: string;
   campaignId?: string;
   className?: string;
