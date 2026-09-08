@@ -11,7 +11,9 @@ export const messages = {
       footer: {
         home: "Home",
         calculator: "Calculator",
-        copyright: "© Frevity. All rights reserved.",
+        copyright: "© 2026 Frevity. All rights reserved.",
+        navigationTitle: "Navigation",
+        socialTitle: "Follow us on social media",
       },
     },
 
@@ -188,7 +190,9 @@ export const messages = {
       footer: {
         home: "Inicio",
         calculator: "Calculadora",
-        copyright: "© Frevity. Todos los derechos reservados.",
+        copyright: "© 2026 Frevity. Todos los derechos reservados.",
+        navigationTitle: "Navegación",
+        socialTitle: "Síguenos en nuestras redes sociales",
       },
     },
 
@@ -364,7 +368,9 @@ export const messages = {
       footer: {
         home: "Início",
         calculator: "Calculadora",
-        copyright: "© Frevity. Todos os direitos reservados.",
+        copyright: "© 2026 Frevity. Todos os direitos reservados.",
+        navigationTitle: "Navegação",
+        socialTitle: "Siga-nos em nossas redes sociais",
       },
     },
 
@@ -540,7 +546,9 @@ export const messages = {
       footer: {
         home: "ホーム",
         calculator: "計算機",
-        copyright: "© Frevity. 無断転載・複製を禁じます。",
+        copyright: "© 2026 Frevity. 無断転載・複製を禁じます。",
+        navigationTitle: "ナビゲーション",
+        socialTitle: "ソーシャルメディアでフォローする",
       },
     },
 

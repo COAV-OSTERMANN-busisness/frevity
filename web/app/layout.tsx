@@ -31,11 +31,11 @@ const navigation = [
 
 const footerLinks = [
   {
-    label: "Home",
+    labelKey: "home",
     href: "/",
   },
   {
-    label: "Calculator",
+    labelKey: "calculator",
     href: "/calculator",
   },
 ] as const;
