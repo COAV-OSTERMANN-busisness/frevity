@@ -2,7 +2,7 @@
 
 import { messages } from "@/lib/i18n/messages";
 import { useI18n } from "@/components/providers/i18n";
-import type { CalculationResult } from "@/types/calculation/calculationResult";
+import type { CalculationResult } from "@/types/calculation/landedCost/calculationResult";
 
 interface CalculatorResultProps {
   result: CalculationResult;

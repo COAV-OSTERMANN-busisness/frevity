@@ -7,7 +7,8 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:unit": "vitest run unit",
-    "test:unit:calculation": "vitest run unit/calculation"
+    "test:unit:calculation:landedCost": "vitest run unit/calculation/landedCost",
+    "test:unit:calculation:freight": "vitest run unit/calculation/freight"
   },
   "devDependencies": {
     "typescript": "^5",

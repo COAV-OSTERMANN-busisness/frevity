@@ -1,4 +1,4 @@
-import type { CalculationResult } from "@/types/calculation/calculationResult";
+import type { CalculationResult } from "@/types/calculation/landedCost/calculationResult";
 
 export const mockCalculationResult: CalculationResult = {
   currency: "USD",
