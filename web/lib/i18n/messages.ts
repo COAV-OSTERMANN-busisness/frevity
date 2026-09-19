@@ -188,8 +188,71 @@ export const messages = {
       advertising: {
         label: "Advertisement",
       },
+      freight: {
+        title: "Freight calculator",
+        description:
+          "Estimate freight based on shipment characteristics and the applicable tariff.",
+        fields: {
+          origin: "Origin",
+          destination: "Destination",
+          mode: "Transport mode",
+          quantity: "Quantity",
+          weight: "Weight",
+          length: "Length",
+          width: "Width",
+          height: "Height",
+          tariffBasis: "Tariff basis",
+          tariffRate: "Tariff rate",
+        },
+        modes: {
+          road: "Road",
+          air: "Air",
+          maritime: "Maritime",
+        },
+        tariffBasis: {
+          weight: "Weight",
+          volume: "Volume",
+          chargeableWeight: "Chargeable weight",
+          unit: "Unit",
+          flat: "Flat rate",
+        },
+        additional: {
+          fieldLabel: "Additional charge",
+          placeholder: "e.g. Toll",
+          add: "Add field",
+          value: "Value",
+          remove: "Remove",
+        },
+        submit: "Calculate freight",
+        result: {
+          title: "Freight Calculation Result",
+          description:
+            "Review the estimated freight and shipment calculation details.",
+          totalLabel: "Estimated freight",
+          breakdown: {
+            baseFreight: "Base freight",
+          },
+          metrics: {
+            actualWeight: "Actual weight",
+            volumetricWeight: "Volumetric weight",
+            chargeableWeight: "Chargeable weight",
+            volume: "Volume",
+            transportMode: "Transport mode",
+            operation: "Operation",
+          },
+          modes: {
+            road: "Road",
+            air: "Air",
+            maritime: "Maritime",
+          },
+          scope: {
+            national: "National",
+            international: "International",
+          },
+        },
+      },
       form: {
-        title: "Freight Cost Simulator",
+        title: "Logistics Cost Simulator",
         description:
           "Enter your shipment information to estimate transportation and logistics costs.",
         origin: "Origin",
@@ -210,11 +273,11 @@ export const messages = {
         weightUnitKg: "kg",
         weightUnitG: "g",
         weightUnitLb: "lb",
-        submit: "Simulate freight cost",
+        submit: "Simulate logistics costs",
       },
       result: {
         title: "Calculation Result",
-        description: "Review the estimated cost of your freight operation.",
+        description: "Review the estimated transportation and logistics costs.",
         totalLabel: "Total landed cost",
         breakdown: {
           cargo: "Cargo",
@@ -429,8 +492,71 @@ export const messages = {
       advertising: {
         label: "Publicidad",
       },
+      freight: {
+        title: "Calcular flete",
+        description:
+          "Estime el flete según las características de la carga y la tarifa aplicable.",
+        fields: {
+          origin: "Origen",
+          destination: "Destino",
+          mode: "Modo de transporte",
+          quantity: "Cantidad",
+          weight: "Peso",
+          length: "Longitud",
+          width: "Ancho",
+          height: "Altura",
+          tariffBasis: "Base tarifaria",
+          tariffRate: "Tarifa",
+        },
+        modes: {
+          road: "Carretera",
+          air: "Aéreo",
+          maritime: "Marítimo",
+        },
+        tariffBasis: {
+          weight: "Peso",
+          volume: "Volumen",
+          chargeableWeight: "Peso facturable",
+          unit: "Unidad",
+          flat: "Tarifa fija",
+        },
+        additional: {
+          fieldLabel: "Cargo adicional",
+          placeholder: "Ej.: Peaje",
+          add: "Agregar campo",
+          value: "Valor",
+          remove: "Eliminar",
+        },
+        submit: "Calcular flete",
+        result: {
+          title: "Resultado del Cálculo de Flete",
+          description:
+            "Revise el flete estimado y los detalles del cálculo de la carga.",
+          totalLabel: "Flete estimado",
+          breakdown: {
+            baseFreight: "Flete base",
+          },
+          metrics: {
+            actualWeight: "Peso real",
+            volumetricWeight: "Peso volumétrico",
+            chargeableWeight: "Peso facturable",
+            volume: "Volumen",
+            transportMode: "Modo de transporte",
+            operation: "Operación",
+          },
+          modes: {
+            road: "Carretera",
+            air: "Aéreo",
+            maritime: "Marítimo",
+          },
+          scope: {
+            national: "Nacional",
+            international: "Internacional",
+          },
+        },
+      },
       form: {
-        title: "Simulador de Costos de Flete",
+        title: "Simulador de Costos Logísticos",
         description:
           "Ingresa la información de tu envío para estimar los costos de transporte y logística.",
         origin: "Origen",
@@ -451,11 +577,11 @@ export const messages = {
         weightUnitKg: "kg",
         weightUnitG: "g",
         weightUnitLb: "lb",
-        submit: "Simular costo de flete",
+        submit: "Simular costos logísticos",
       },
       result: {
         title: "Resultado del cálculo",
-        description: "Revisa el costo estimado de tu operación de transporte.",
+        description: "Revisa los costos estimados de transporte y logística.",
         totalLabel: "Costo total aterrizado",
         breakdown: {
           cargo: "Carga",
@@ -670,8 +796,71 @@ export const messages = {
       advertising: {
         label: "Publicidade",
       },
+      freight: {
+        title: "Calcular frete",
+        description:
+          "Estime o frete com base nas características da carga e na tarifa aplicável.",
+        fields: {
+          origin: "Origem",
+          destination: "Destino",
+          mode: "Modal de transporte",
+          quantity: "Quantidade",
+          weight: "Peso",
+          length: "Comprimento",
+          width: "Largura",
+          height: "Altura",
+          tariffBasis: "Base tarifária",
+          tariffRate: "Tarifa",
+        },
+        modes: {
+          road: "Rodoviário",
+          air: "Aéreo",
+          maritime: "Marítimo",
+        },
+        tariffBasis: {
+          weight: "Peso",
+          volume: "Volume",
+          chargeableWeight: "Peso tarifável",
+          unit: "Unidade",
+          flat: "Tarifa fixa",
+        },
+        additional: {
+          fieldLabel: "Custo adicional",
+          placeholder: "Ex.: Pedágio",
+          add: "Adicionar campo",
+          value: "Valor",
+          remove: "Remover",
+        },
+        submit: "Calcular frete",
+        result: {
+          title: "Resultado do Cálculo de Frete",
+          description:
+            "Confira o frete estimado e os detalhes do cálculo da carga.",
+          totalLabel: "Frete estimado",
+          breakdown: {
+            baseFreight: "Frete base",
+          },
+          metrics: {
+            actualWeight: "Peso real",
+            volumetricWeight: "Peso cubado",
+            chargeableWeight: "Peso taxado",
+            volume: "Volume",
+            transportMode: "Modal",
+            operation: "Operação",
+          },
+          modes: {
+            road: "Rodoviário",
+            air: "Aéreo",
+            maritime: "Marítimo",
+          },
+          scope: {
+            national: "Nacional",
+            international: "Internacional",
+          },
+        },
+      },
       form: {
-        title: "Simulador de Custos de Frete",
+        title: "Simulador de Custos Logísticos",
         description:
           "Informe os dados da sua remessa para estimar os custos de transporte e logística.",
         origin: "Origem",
@@ -692,11 +881,11 @@ export const messages = {
         weightUnitKg: "kg",
         weightUnitG: "g",
         weightUnitLb: "lb",
-        submit: "Simular custo de frete",
+        submit: "Simular custos logísticos",
       },
       result: {
         title: "Resultado do cálculo",
-        description: "Confira o custo estimado da sua operação de frete.",
+        description: "Confira os custos estimados de transporte e logística.",
         totalLabel: "Custo total aterrissado",
         breakdown: {
           cargo: "Carga",
@@ -906,8 +1095,69 @@ export const messages = {
       advertising: {
         label: "広告",
       },
+      freight: {
+        title: "運賃を計算",
+        description: "貨物の特性と適用される料金に基づいて運賃を見積もります。",
+        fields: {
+          origin: "出発地",
+          destination: "目的地",
+          mode: "輸送モード",
+          quantity: "数量",
+          weight: "重量",
+          length: "長さ",
+          width: "幅",
+          height: "高さ",
+          tariffBasis: "料金基準",
+          tariffRate: "料金",
+        },
+        modes: {
+          road: "道路輸送",
+          air: "航空輸送",
+          maritime: "海上輸送",
+        },
+        tariffBasis: {
+          weight: "重量",
+          volume: "容積",
+          chargeableWeight: "課金重量",
+          unit: "単位",
+          flat: "固定料金",
+        },
+        additional: {
+          fieldLabel: "追加料金",
+          placeholder: "例：通行料",
+          add: "項目を追加",
+          value: "金額",
+          remove: "削除",
+        },
+        submit: "運賃を計算",
+        result: {
+          title: "運賃計算結果",
+          description: "推定運賃と貨物計算の詳細を確認できます。",
+          totalLabel: "推定運賃",
+          breakdown: {
+            baseFreight: "基本運賃",
+          },
+          metrics: {
+            actualWeight: "実重量",
+            volumetricWeight: "容積重量",
+            chargeableWeight: "課金重量",
+            volume: "容積",
+            transportMode: "輸送モード",
+            operation: "輸送区分",
+          },
+          modes: {
+            road: "道路輸送",
+            air: "航空輸送",
+            maritime: "海上輸送",
+          },
+          scope: {
+            national: "国内",
+            international: "国際",
+          },
+        },
+      },
       form: {
-        title: "運賃コストシミュレーター",
+        title: "物流コストシミュレーター",
         description: "輸送情報を入力して、輸送および物流コストを見積もります。",
         origin: "出発地",
         destination: "到着地",
@@ -927,11 +1177,11 @@ export const messages = {
         weightUnitKg: "kg",
         weightUnitG: "g",
         weightUnitLb: "lb",
-        submit: "運賃コストをシミュレーション",
+        submit: "物流コストをシミュレーション",
       },
       result: {
         title: "計算結果",
-        description: "輸送業務の推定コストを確認できます。",
+        description: "輸送および物流の推定コストを確認できます。",
         totalLabel: "総着地コスト",
         breakdown: {
           cargo: "貨物",

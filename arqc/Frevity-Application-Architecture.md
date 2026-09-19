@@ -1257,15 +1257,34 @@ alternate redirected.
 
 # 41. Observability
 
-MVP observability remains lightweight:
+Frevity uses **Grafana Cloud** as its observability platform.
 
--   deployment status;
--   runtime error visibility;
--   analytics;
--   basic hosting logs.
+The observability layer is external to the application domain and must not
+introduce dependencies into the calculation engines.
 
-A complex observability stack is not justified before operational scale
-exists.
+Initial observability scope:
+
+- application monitoring;
+- runtime error visibility;
+- logs;
+- performance monitoring;
+- operational dashboards;
+- alerts where appropriate.
+
+Conceptually:
+
+Application
+    |
+    +--> Freight Engine
+    |
+    +--> Landed Cost Engine
+    |
+    +--> Analytics
+    |
+    +--> Grafana Cloud
+
+Observability failures must not prevent freight or landed-cost calculations
+from executing.
 
 ------------------------------------------------------------------------
 

@@ -45,7 +45,7 @@ export function CalculatorForm() {
 
   function updateField<K extends keyof CalculatorFormState>(
     field: K,
-    value: CalculatorFormState[K],
+    value: CalculatorFormState[K]
   ) {
     setForm((current) => ({
       ...current,
@@ -133,7 +133,7 @@ export function CalculatorForm() {
             onChange={(event) =>
               updateField(
                 "transportMode",
-                event.target.value as CalculatorFormState["transportMode"],
+                event.target.value as CalculatorFormState["transportMode"]
               )
             }
             className="w-full rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] px-4 py-3 text-sm outline-none transition focus:border-[var(--brand-primary)] focus:ring-2 focus:ring-[var(--brand-primary)]/20"
@@ -193,7 +193,7 @@ export function CalculatorForm() {
               onChange={(event) =>
                 updateField(
                   "weightUnit",
-                  event.target.value as CalculatorFormState["weightUnit"],
+                  event.target.value as CalculatorFormState["weightUnit"]
                 )
               }
               className="w-24 rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] px-3 py-3 text-sm outline-none transition focus:border-[var(--brand-primary)] focus:ring-2 focus:ring-[var(--brand-primary)]/20"
@@ -253,7 +253,7 @@ export function CalculatorForm() {
               onChange={(event) =>
                 updateField(
                   field as keyof CalculatorFormState,
-                  event.target.value,
+                  event.target.value
                 )
               }
               className="w-full rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] px-4 py-3 text-sm outline-none transition focus:border-[var(--brand-primary)] focus:ring-2 focus:ring-[var(--brand-primary)]/20"
