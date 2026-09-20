@@ -1,17 +1,26 @@
 import { getGoogleMapsApiKey } from "../config";
 
+interface GoogleAddressComponent {
+  types?: string[];
+  shortText?: string;
+}
+
+interface GoogleGeocodingResult {
+  location?: {
+    latitude?: number;
+    longitude?: number;
+  };
+  addressComponents?: GoogleAddressComponent[];
+}
+
 interface GoogleGeocodingResponse {
-  results?: Array<{
-    location?: {
-      latitude?: number;
-      longitude?: number;
-    };
-  }>;
+  results?: GoogleGeocodingResult[];
 }
 
 export interface GeocodedLocation {
   latitude: number;
   longitude: number;
+  countryCode: string;
 }
 
 const GOOGLE_GEOCODING_BASE_URL =
@@ -19,6 +28,24 @@ const GOOGLE_GEOCODING_BASE_URL =
 
 function isValidCoordinate(value: unknown): value is number {
   return typeof value === "number" && Number.isFinite(value);
+}
+
+function resolveCountryCode(
+  addressComponents?: GoogleAddressComponent[]
+): string {
+  const countryComponent = addressComponents?.find((component) =>
+    component.types?.includes("country")
+  );
+
+  const countryCode = countryComponent?.shortText?.trim().toUpperCase();
+
+  if (!countryCode) {
+    throw new Error(
+      "Country could not be identified from the geocoding result."
+    );
+  }
+
+  return countryCode;
 }
 
 export async function geocodeLocation(
@@ -39,8 +66,12 @@ export async function geocodeLocation(
       method: "GET",
       headers: {
         "X-Goog-Api-Key": apiKey,
-        "X-Goog-FieldMask":
-          "results.location.latitude,results.location.longitude",
+        "X-Goog-FieldMask": [
+          "results.location.latitude",
+          "results.location.longitude",
+          "results.addressComponents.types",
+          "results.addressComponents.shortText",
+        ].join(","),
       },
       cache: "no-store",
     }
@@ -53,7 +84,8 @@ export async function geocodeLocation(
   }
 
   const data = (await response.json()) as GoogleGeocodingResponse;
-  const locationResult = data.results?.[0]?.location;
+  const result = data.results?.[0];
+  const locationResult = result?.location;
 
   if (
     !locationResult ||
@@ -68,5 +100,6 @@ export async function geocodeLocation(
   return {
     latitude: locationResult.latitude,
     longitude: locationResult.longitude,
+    countryCode: resolveCountryCode(result.addressComponents),
   };
 }

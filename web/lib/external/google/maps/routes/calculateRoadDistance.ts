@@ -10,6 +10,11 @@ interface GoogleRoutesResponse {
   }>;
 }
 
+interface GoogleLatLng {
+  latitude: number;
+  longitude: number;
+}
+
 export interface RoadDistanceResult {
   distanceKm: number;
   origin: GeocodedLocation;
@@ -20,7 +25,18 @@ const GOOGLE_ROUTES_URL =
   "https://routes.googleapis.com/directions/v2:computeRoutes";
 
 function isValidDistance(value: unknown): value is number {
-  return typeof value === "number" && Number.isFinite(value) && value >= 0;
+  return (
+    typeof value === "number" &&
+    Number.isFinite(value) &&
+    value >= 0
+  );
+}
+
+function toGoogleLatLng(location: GeocodedLocation): GoogleLatLng {
+  return {
+    latitude: location.latitude,
+    longitude: location.longitude,
+  };
 }
 
 export async function calculateRoadDistance(
@@ -55,12 +71,12 @@ export async function calculateRoadDistance(
     body: JSON.stringify({
       origin: {
         location: {
-          latLng: originCoordinates,
+          latLng: toGoogleLatLng(originCoordinates),
         },
       },
       destination: {
         location: {
-          latLng: destinationCoordinates,
+          latLng: toGoogleLatLng(destinationCoordinates),
         },
       },
       travelMode: "DRIVE",
@@ -77,8 +93,10 @@ export async function calculateRoadDistance(
   });
 
   if (!response.ok) {
+    const errorBody = await response.text();
+
     throw new Error(
-      `Google Routes API request failed with status ${response.status}.`
+      `Google Routes API request failed with status ${response.status}: ${errorBody}`
     );
   }
 

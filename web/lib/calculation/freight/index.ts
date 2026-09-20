@@ -11,3 +11,10 @@ export { calculateMaritimeFreight } from "./maritime/calculateMaritimeFreight";
 
 export { calculateRoadFreight } from "./road/calculateRoadFreight";
 export { calculateRoadRegulatoryFloor } from "./road/calculateRoadRegulatoryFloor";
+
+export {
+    resolveFreightContext,
+    resolveFreightCurrency,
+    resolveFreightScope,
+    type FreightContext,
+  } from "./context";
