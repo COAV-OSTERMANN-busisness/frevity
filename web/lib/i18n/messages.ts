@@ -203,11 +203,20 @@ export const messages = {
           height: "Height",
           tariffBasis: "Tariff basis",
           tariffRate: "Tariff rate",
+          maritimeType: "Maritime shipment type",
+          containerQuantity: "Container quantity",
+          volumetricDivisor: "Volumetric divisor",
+          tariffEstimate:
+            "Estimated reference tariff. Replace it with your carrier's tariff when available.",
         },
         modes: {
           road: "Road",
           air: "Air",
           maritime: "Maritime",
+        },
+        maritimeTypes: {
+          fcl: "FCL — Full Container Load",
+          lcl: "LCL — Less than Container Load",
         },
         tariffBasis: {
           weight: "Weight",
@@ -507,11 +516,20 @@ export const messages = {
           height: "Altura",
           tariffBasis: "Base tarifaria",
           tariffRate: "Tarifa",
+          maritimeType: "Tipo de envío marítimo",
+          containerQuantity: "Cantidad de contenedores",
+          volumetricDivisor: "Divisor volumétrico",
+          tariffEstimate:
+            "Tarifa de referencia estimada. Sustitúyela por la tarifa de tu transportista cuando esté disponible.",
         },
         modes: {
           road: "Carretera",
           air: "Aéreo",
           maritime: "Marítimo",
+        },
+        maritimeTypes: {
+          fcl: "FCL — Contenedor completo",
+          lcl: "LCL — Carga consolidada",
         },
         tariffBasis: {
           weight: "Peso",
@@ -811,11 +829,20 @@ export const messages = {
           height: "Altura",
           tariffBasis: "Base tarifária",
           tariffRate: "Tarifa",
+          maritimeType: "Tipo de embarque marítimo",
+          containerQuantity: "Quantidade de contêineres",
+          volumetricDivisor: "Divisor volumétrico",
+          tariffEstimate:
+            "Tarifa referencial estimada. Substitua pela tarifa da transportadora quando disponível.",
         },
         modes: {
           road: "Rodoviário",
           air: "Aéreo",
           maritime: "Marítimo",
+        },
+        maritimeTypes: {
+          fcl: "FCL — Contêiner completo",
+          lcl: "LCL — Carga consolidada",
         },
         tariffBasis: {
           weight: "Peso",
@@ -1109,11 +1136,20 @@ export const messages = {
           height: "高さ",
           tariffBasis: "料金基準",
           tariffRate: "料金",
+          maritimeType: "海上輸送タイプ",
+          containerQuantity: "コンテナ数量",
+          volumetricDivisor: "容積重量除数",
+          tariffEstimate:
+            "参考推定料金です。運送会社の料金がわかる場合は置き換えてください。",
         },
         modes: {
           road: "道路輸送",
           air: "航空輸送",
           maritime: "海上輸送",
+        },
+        maritimeTypes: {
+          fcl: "FCL — コンテナ単位",
+          lcl: "LCL — 混載貨物",
         },
         tariffBasis: {
           weight: "重量",

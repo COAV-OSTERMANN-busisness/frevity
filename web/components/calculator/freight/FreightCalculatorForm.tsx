@@ -7,25 +7,33 @@ import { messages } from "@/lib/i18n/messages";
 
 import type { AdditionalFreightCharge } from "@/types/calculation/freight/additionalFreightCharge";
 import type { FreightTransportMode } from "@/types/calculation/freight/freightCalculationInput";
+import type { MaritimeFreightType } from "@/types/calculation/freight/maritimeFreight";
 import type { FreightTariffBasis } from "@/types/calculation/freight/freightTariff";
 
 import { AdditionalFreightField } from "./AdditionalFreightField";
 import { AdditionalFreightFieldForm } from "./AdditionalFreightFieldForm";
 
+const DEFAULT_ESTIMATED_TARIFF_RATE = "39.28";
+
+interface FreightCalculatorFormData {
+  originCountry: string;
+  destinationCountry: string;
+  mode: FreightTransportMode;
+  quantity: number;
+  weight: number;
+  length: number;
+  width: number;
+  height: number;
+  tariffBasis: FreightTariffBasis;
+  tariffRate: number;
+  volumetricDivisor?: number;
+  maritimeType?: MaritimeFreightType;
+  containerQuantity?: number;
+  additionalCharges: AdditionalFreightCharge[];
+}
+
 interface FreightCalculatorFormProps {
-  onSubmit: (data: {
-    originCountry: string;
-    destinationCountry: string;
-    mode: FreightTransportMode;
-    quantity: number;
-    weight: number;
-    length: number;
-    width: number;
-    height: number;
-    tariffBasis: FreightTariffBasis;
-    tariffRate: number;
-    additionalCharges: AdditionalFreightCharge[];
-  }) => void;
+  onSubmit: (data: FreightCalculatorFormData) => void;
 }
 
 export function FreightCalculatorForm({
@@ -35,28 +43,36 @@ export function FreightCalculatorForm({
   const translations = messages[locale].calculator.freight;
 
   const [originCountry, setOriginCountry] = useState("");
-
   const [destinationCountry, setDestinationCountry] = useState("");
 
-  const [mode, setMode] = useState<FreightTransportMode>("road");
+  const [mode, setMode] =
+    useState<FreightTransportMode>("road");
 
   const [quantity, setQuantity] = useState("");
-
   const [weight, setWeight] = useState("");
 
   const [length, setLength] = useState("");
-
   const [width, setWidth] = useState("");
-
   const [height, setHeight] = useState("");
 
-  const [tariffBasis, setTariffBasis] = useState<FreightTariffBasis>("weight");
+  const [tariffBasis, setTariffBasis] =
+    useState<FreightTariffBasis>("weight");
 
-  const [tariffRate, setTariffRate] = useState("");
+  const [tariffRate, setTariffRate] = useState(
+    DEFAULT_ESTIMATED_TARIFF_RATE,
+  );
 
-  const [additionalCharges, setAdditionalCharges] = useState<
-    AdditionalFreightCharge[]
-  >([]);
+  const [volumetricDivisor, setVolumetricDivisor] =
+    useState("");
+
+  const [maritimeType, setMaritimeType] =
+    useState<MaritimeFreightType>("lcl");
+
+  const [containerQuantity, setContainerQuantity] =
+    useState("1");
+
+  const [additionalCharges, setAdditionalCharges] =
+    useState<AdditionalFreightCharge[]>([]);
 
   function addAdditionalCharge(label: string): void {
     setAdditionalCharges((current) => [
@@ -72,7 +88,10 @@ export function FreightCalculatorForm({
     ]);
   }
 
-  function updateAdditionalCharge(id: string, amount: number): void {
+  function updateAdditionalCharge(
+    id: string,
+    amount: number,
+  ): void {
     setAdditionalCharges((current) =>
       current.map((charge) =>
         charge.id === id
@@ -83,18 +102,49 @@ export function FreightCalculatorForm({
                 amount,
               },
             }
-          : charge
-      )
+          : charge,
+      ),
     );
   }
 
   function removeAdditionalCharge(id: string): void {
     setAdditionalCharges((current) =>
-      current.filter((charge) => charge.id !== id)
+      current.filter((charge) => charge.id !== id),
     );
   }
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>): void {
+  function handleModeChange(
+    nextMode: FreightTransportMode,
+  ): void {
+    setMode(nextMode);
+
+    if (nextMode === "air") {
+      setTariffBasis("chargeableWeight");
+      return;
+    }
+
+    if (nextMode === "maritime") {
+      setTariffBasis(
+        maritimeType === "fcl" ? "unit" : "volume",
+      );
+      return;
+    }
+
+    setTariffBasis("weight");
+  }
+
+  function handleMaritimeTypeChange(
+    nextType: MaritimeFreightType,
+  ): void {
+    setMaritimeType(nextType);
+    setTariffBasis(
+      nextType === "fcl" ? "unit" : "volume",
+    );
+  }
+
+  function handleSubmit(
+    event: FormEvent<HTMLFormElement>,
+  ): void {
     event.preventDefault();
 
     onSubmit({
@@ -109,11 +159,30 @@ export function FreightCalculatorForm({
       tariffBasis,
       tariffRate: Number(tariffRate),
       additionalCharges,
+      ...(mode === "air"
+        ? {
+            volumetricDivisor: Number(
+              volumetricDivisor,
+            ),
+          }
+        : {}),
+      ...(mode === "maritime"
+        ? {
+            maritimeType,
+            ...(maritimeType === "fcl"
+              ? {
+                  containerQuantity: Number(
+                    containerQuantity,
+                  ),
+                }
+              : {}),
+          }
+        : {}),
     });
   }
 
   const inputClassName =
-  "w-full rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] px-4 py-3 text-sm outline-none transition focus:border-[var(--brand-primary)] focus:ring-2 focus:ring-[var(--brand-primary)]/20";
+    "w-full rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] px-4 py-3 text-sm outline-none transition focus:border-[var(--brand-primary)] focus:ring-2 focus:ring-[var(--brand-primary)]/20";
 
   return (
     <form
@@ -153,7 +222,9 @@ export function FreightCalculatorForm({
             required
             type="text"
             value={originCountry}
-            onChange={(event) => setOriginCountry(event.target.value)}
+            onChange={(event) =>
+              setOriginCountry(event.target.value)
+            }
             className={inputClassName}
             style={{ color: "var(--color-text)" }}
           />
@@ -171,7 +242,9 @@ export function FreightCalculatorForm({
             required
             type="text"
             value={destinationCountry}
-            onChange={(event) => setDestinationCountry(event.target.value)}
+            onChange={(event) =>
+              setDestinationCountry(event.target.value)
+            }
             className={inputClassName}
             style={{ color: "var(--color-text)" }}
           />
@@ -189,16 +262,22 @@ export function FreightCalculatorForm({
             <select
               value={mode}
               onChange={(event) =>
-                setMode(event.target.value as FreightTransportMode)
+                handleModeChange(
+                  event.target.value as FreightTransportMode,
+                )
               }
               className={inputClassName}
               style={{ color: "var(--color-text)" }}
             >
-              <option value="road">{translations.modes.road}</option>
-
-              <option value="air">{translations.modes.air}</option>
-
-              <option value="maritime">{translations.modes.maritime}</option>
+              <option value="road">
+                {translations.modes.road}
+              </option>
+              <option value="air">
+                {translations.modes.air}
+              </option>
+              <option value="maritime">
+                {translations.modes.maritime}
+              </option>
             </select>
           </label>
 
@@ -216,12 +295,71 @@ export function FreightCalculatorForm({
               step="1"
               type="number"
               value={quantity}
-              onChange={(event) => setQuantity(event.target.value)}
+              onChange={(event) =>
+                setQuantity(event.target.value)
+              }
               className={inputClassName}
               style={{ color: "var(--color-text)" }}
             />
           </label>
+        </div>
 
+        {mode === "maritime" && (
+          <div className="grid gap-6 md:grid-cols-2">
+            <label className="block">
+              <span
+                className="mb-2 block text-sm font-medium"
+                style={{ color: "var(--color-text)" }}
+              >
+                {translations.fields.maritimeType}
+              </span>
+
+              <select
+                value={maritimeType}
+                onChange={(event) =>
+                  handleMaritimeTypeChange(
+                    event.target.value as MaritimeFreightType,
+                  )
+                }
+                className={inputClassName}
+                style={{ color: "var(--color-text)" }}
+              >
+                <option value="fcl">
+                  {translations.maritimeTypes.fcl}
+                </option>
+                <option value="lcl">
+                  {translations.maritimeTypes.lcl}
+                </option>
+              </select>
+            </label>
+
+            {maritimeType === "fcl" && (
+              <label className="block">
+                <span
+                  className="mb-2 block text-sm font-medium"
+                  style={{ color: "var(--color-text)" }}
+                >
+                  {translations.fields.containerQuantity}
+                </span>
+
+                <input
+                  required
+                  min="1"
+                  step="1"
+                  type="number"
+                  value={containerQuantity}
+                  onChange={(event) =>
+                    setContainerQuantity(event.target.value)
+                  }
+                  className={inputClassName}
+                  style={{ color: "var(--color-text)" }}
+                />
+              </label>
+            )}
+          </div>
+        )}
+
+        <div className="grid gap-6 md:grid-cols-2">
           <label className="block">
             <span
               className="mb-2 block text-sm font-medium"
@@ -236,7 +374,9 @@ export function FreightCalculatorForm({
               step="any"
               type="number"
               value={weight}
-              onChange={(event) => setWeight(event.target.value)}
+              onChange={(event) =>
+                setWeight(event.target.value)
+              }
               className={inputClassName}
               style={{ color: "var(--color-text)" }}
             />
@@ -253,22 +393,28 @@ export function FreightCalculatorForm({
             <select
               value={tariffBasis}
               onChange={(event) =>
-                setTariffBasis(event.target.value as FreightTariffBasis)
+                setTariffBasis(
+                  event.target.value as FreightTariffBasis,
+                )
               }
               className={inputClassName}
               style={{ color: "var(--color-text)" }}
             >
-              <option value="weight">{translations.tariffBasis.weight}</option>
-
-              <option value="volume">{translations.tariffBasis.volume}</option>
-
+              <option value="weight">
+                {translations.tariffBasis.weight}
+              </option>
+              <option value="volume">
+                {translations.tariffBasis.volume}
+              </option>
               <option value="chargeableWeight">
                 {translations.tariffBasis.chargeableWeight}
               </option>
-
-              <option value="unit">{translations.tariffBasis.unit}</option>
-
-              <option value="flat">{translations.tariffBasis.flat}</option>
+              <option value="unit">
+                {translations.tariffBasis.unit}
+              </option>
+              <option value="flat">
+                {translations.tariffBasis.flat}
+              </option>
             </select>
           </label>
         </div>
@@ -288,7 +434,9 @@ export function FreightCalculatorForm({
               step="any"
               type="number"
               value={length}
-              onChange={(event) => setLength(event.target.value)}
+              onChange={(event) =>
+                setLength(event.target.value)
+              }
               className={inputClassName}
               style={{ color: "var(--color-text)" }}
             />
@@ -308,7 +456,9 @@ export function FreightCalculatorForm({
               step="any"
               type="number"
               value={width}
-              onChange={(event) => setWidth(event.target.value)}
+              onChange={(event) =>
+                setWidth(event.target.value)
+              }
               className={inputClassName}
               style={{ color: "var(--color-text)" }}
             />
@@ -328,12 +478,38 @@ export function FreightCalculatorForm({
               step="any"
               type="number"
               value={height}
-              onChange={(event) => setHeight(event.target.value)}
+              onChange={(event) =>
+                setHeight(event.target.value)
+              }
               className={inputClassName}
               style={{ color: "var(--color-text)" }}
             />
           </label>
         </div>
+
+        {mode === "air" && (
+          <label className="block">
+            <span
+              className="mb-2 block text-sm font-medium"
+              style={{ color: "var(--color-text)" }}
+            >
+              {translations.fields.volumetricDivisor}
+            </span>
+
+            <input
+              required
+              min="0.000001"
+              step="any"
+              type="number"
+              value={volumetricDivisor}
+              onChange={(event) =>
+                setVolumetricDivisor(event.target.value)
+              }
+              className={inputClassName}
+              style={{ color: "var(--color-text)" }}
+            />
+          </label>
+        )}
 
         <label className="block">
           <span
@@ -349,10 +525,19 @@ export function FreightCalculatorForm({
             step="0.01"
             type="number"
             value={tariffRate}
-            onChange={(event) => setTariffRate(event.target.value)}
+            onChange={(event) =>
+              setTariffRate(event.target.value)
+            }
             className={inputClassName}
             style={{ color: "var(--color-text)" }}
           />
+
+          <span
+            className="mt-2 block text-xs leading-5"
+            style={{ color: "var(--color-muted)" }}
+          >
+            {translations.fields.tariffEstimate}
+          </span>
         </label>
 
         <div className="border-t border-[var(--color-border)] pt-6">
