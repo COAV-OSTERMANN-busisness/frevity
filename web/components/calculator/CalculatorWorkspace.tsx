@@ -3,13 +3,21 @@
 import { useState } from "react";
 
 import { messages } from "@/lib/i18n/messages";
-import { resolveFreightContext } from "@/lib/calculation/freight";
+import {
+  calculateVolume,
+  calculateVolumetricWeight,
+  resolveFreightContext,
+} from "@/lib/calculation/freight";
+import { convertLength } from "@/lib/conversion";
 
 import { useI18n } from "@/components/providers/i18n";
 
 import type { CalculationResult } from "@/types/calculation/landedCost/calculationResult";
 import type { FreightResult } from "@/types/calculation/freight/freightResult";
-import type { FreightTransportMode } from "@/types/calculation/freight/freightCalculationInput";
+import type {
+  FreightCalculationInput,
+  FreightTransportMode,
+} from "@/types/calculation/freight/freightCalculationInput";
 import type { AdditionalFreightCharge } from "@/types/calculation/freight/additionalFreightCharge";
 import type { MaritimeFreightType } from "@/types/calculation/freight/maritimeFreight";
 import type { FreightTariffBasis } from "@/types/calculation/freight/freightTariff";
@@ -51,6 +59,126 @@ interface RoadDistanceResponse {
   distanceKm: number;
   origin: GeocodeResponse;
   destination: GeocodeResponse;
+}
+
+interface ResolvedFreightContext {
+  originCountry: string;
+  destinationCountry: string;
+  scope: FreightCalculationInput["scope"];
+  currency: string;
+}
+
+function buildFreightCalculationInput(
+  data: FreightFormData,
+  context: ResolvedFreightContext
+): FreightCalculationInput {
+  const tariff = {
+    basis: data.tariffBasis,
+    rate: {
+      amount: data.tariffRate,
+      currency: context.currency,
+    },
+  };
+
+  const additionalCharges = data.additionalCharges.map((charge) => ({
+    ...charge,
+    amount: {
+      ...charge.amount,
+      currency: context.currency,
+    },
+  }));
+
+  const route = {
+    originCountry: context.originCountry,
+    destinationCountry: context.destinationCountry,
+  };
+
+  if (data.mode === "road") {
+    return {
+      scope: context.scope,
+      mode: "road",
+      route,
+      road: {
+        actualWeight: data.weight,
+        volume: calculateVolume({
+          length: data.length,
+          width: data.width,
+          height: data.height,
+        }),
+        quantity: data.quantity,
+        tariff,
+      },
+      additionalCharges,
+    };
+  }
+
+  if (data.mode === "air") {
+    if (data.volumetricDivisor === undefined) {
+      throw new Error("Air freight volumetric divisor is required.");
+    }
+
+    const volumetricWeight = calculateVolumetricWeight({
+      length: convertLength(data.length, "m", "cm"),
+      width: convertLength(data.width, "m", "cm"),
+      height: convertLength(data.height, "m", "cm"),
+      divisor: data.volumetricDivisor,
+    });
+
+    return {
+      scope: context.scope,
+      mode: "air",
+      route,
+      air: {
+        actualWeight: data.weight,
+        volumetricWeight: volumetricWeight.value,
+        tariff,
+      },
+      additionalCharges,
+    };
+  }
+
+  if (!data.maritimeType) {
+    throw new Error("Maritime freight type is required.");
+  }
+
+  if (data.maritimeType === "fcl") {
+    if (data.containerQuantity === undefined) {
+      throw new Error("FCL container quantity is required.");
+    }
+
+    return {
+      scope: context.scope,
+      mode: "maritime",
+      route,
+      maritime: {
+        type: "fcl",
+        fcl: {
+          tariff,
+          containerQuantity: data.containerQuantity,
+        },
+      },
+      additionalCharges,
+    };
+  }
+
+  return {
+    scope: context.scope,
+    mode: "maritime",
+    route,
+    maritime: {
+      type: "lcl",
+      lcl: {
+        actualWeight: data.weight,
+        volume: calculateVolume({
+          length: data.length,
+          width: data.width,
+          height: data.height,
+        }),
+        tariff,
+      },
+    },
+    additionalCharges,
+  };
 }
 
 async function geocodeLocation(location: string): Promise<GeocodeResponse> {
@@ -130,10 +258,14 @@ export function CalculatorWorkspace({
         locationContext.destinationCountry
       );
 
-      console.log("Freight integration context:", {
-        ...freightContext,
-        distanceKm: locationContext.distanceKm,
+      const freightCalculationInput = buildFreightCalculationInput(data, {
+        originCountry: freightContext.originCountry,
+        destinationCountry: freightContext.destinationCountry,
+        scope: freightContext.scope,
+        currency: freightContext.currency,
       });
+
+      console.log("Freight calculation input:", freightCalculationInput);
     } catch (error) {
       console.error("Freight context resolution failed:", error);
     }
