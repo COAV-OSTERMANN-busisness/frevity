@@ -58,6 +58,7 @@ interface FreightFormData {
   containerQuantity?: number;
   additionalCharges: AdditionalFreightCharge[];
 }
+
 interface GeocodeResponse {
   latitude: number;
   longitude: number;
@@ -79,35 +80,18 @@ interface ResolvedFreightContext {
 
 type FreightCalculationStatus = "idle" | "loading" | "success" | "error";
 
-
 function buildFreightCalculationInput(
   data: FreightFormData,
   context: ResolvedFreightContext
 ): FreightCalculationInput {
   // Normalização física: realizada uma única vez.
-  const actualWeightKg = convertMass(
-    data.weight,
-    data.weightUnit,
-    "kg"
-  );
+  const actualWeightKg = convertMass(data.weight, data.weightUnit, "kg");
 
-  const lengthMeters = convertLength(
-    data.length,
-    data.lengthUnit,
-    "m"
-  );
+  const lengthMeters = convertLength(data.length, data.lengthUnit, "m");
 
-  const widthMeters = convertLength(
-    data.width,
-    data.widthUnit,
-    "m"
-  );
+  const widthMeters = convertLength(data.width, data.widthUnit, "m");
 
-  const heightMeters = convertLength(
-    data.height,
-    data.heightUnit,
-    "m"
-  );
+  const heightMeters = convertLength(data.height, data.heightUnit, "m");
 
   const volumeM3 = calculateVolume({
     length: lengthMeters,
@@ -123,15 +107,13 @@ function buildFreightCalculationInput(
     },
   };
 
-  const additionalCharges = data.additionalCharges.map(
-    (charge) => ({
-      ...charge,
-      amount: {
-        ...charge.amount,
-        currency: context.currency,
-      },
-    })
-  );
+  const additionalCharges = data.additionalCharges.map((charge) => ({
+    ...charge,
+    amount: {
+      ...charge.amount,
+      currency: context.currency,
+    },
+  }));
 
   const route = {
     originCountry: context.originCountry,
@@ -139,13 +121,17 @@ function buildFreightCalculationInput(
   };
 
   if (data.mode === "road") {
+    // Vt = C × L × A × Q.
+    // O peso informado já representa toda a remessa.
+    const totalVolumeM3 = volumeM3 * data.quantity;
+
     return {
       scope: context.scope,
       mode: "road",
       route,
       road: {
         actualWeight: actualWeightKg,
-        volume: volumeM3,
+        volume: totalVolumeM3,
         quantity: data.quantity,
         tariff,
       },
@@ -155,9 +141,7 @@ function buildFreightCalculationInput(
 
   if (data.mode === "air") {
     if (data.volumetricDivisor === undefined) {
-      throw new Error(
-        "Air freight volumetric divisor is required."
-      );
+      throw new Error("Air freight volumetric divisor is required.");
     }
 
     const volumetricWeight = calculateVolumetricWeight({
@@ -181,16 +165,12 @@ function buildFreightCalculationInput(
   }
 
   if (!data.maritimeType) {
-    throw new Error(
-      "Maritime freight type is required."
-    );
+    throw new Error("Maritime freight type is required.");
   }
 
   if (data.maritimeType === "fcl") {
     if (data.containerQuantity === undefined) {
-      throw new Error(
-        "FCL container quantity is required."
-      );
+      throw new Error("FCL container quantity is required.");
     }
 
     return {

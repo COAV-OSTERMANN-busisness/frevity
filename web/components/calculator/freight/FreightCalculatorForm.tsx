@@ -1,3 +1,4 @@
+
 "use client";
 
 import { FormEvent, useState } from "react";
@@ -70,7 +71,8 @@ export function FreightCalculatorForm({
   const [height, setHeight] = useState("");
   const [heightUnit, setHeightUnit] = useState<LengthUnit>("cm");
 
-  const [tariffBasis, setTariffBasis] = useState<FreightTariffBasis>("weight");
+  const [tariffBasis, setTariffBasis] =
+    useState<FreightTariffBasis>("chargeableWeight");
 
   const [tariffRate, setTariffRate] = useState(DEFAULT_ESTIMATED_TARIFF_RATE);
 
@@ -133,7 +135,7 @@ export function FreightCalculatorForm({
       return;
     }
 
-    setTariffBasis("weight");
+    setTariffBasis("chargeableWeight");
   }
 
   function handleMaritimeTypeChange(nextType: MaritimeFreightType): void {

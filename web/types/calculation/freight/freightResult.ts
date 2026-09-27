@@ -1,3 +1,4 @@
+
 import type { AdditionalFreightCharge } from "./additionalFreightCharge";
 import type {
   FreightMoney,
@@ -20,6 +21,7 @@ export interface FreightResult {
 
   actualWeight?: number;
   volumetricWeight?: number;
+  cubedWeightKg?: number;
   chargeableWeight?: number;
   volume?: number;
   stowageFactor?: number;
