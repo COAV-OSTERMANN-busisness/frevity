@@ -1,9 +1,8 @@
+
 "use client";
 
-import {
-  FormEvent,
-  useState,
-} from "react";
+import { useState } from "react";
+import type { KeyboardEvent } from "react";
 
 interface AdditionalFreightFieldFormProps {
   fieldLabel: string;
@@ -20,11 +19,7 @@ export function AdditionalFreightFieldForm({
 }: AdditionalFreightFieldFormProps) {
   const [label, setLabel] = useState("");
 
-  function handleSubmit(
-    event: FormEvent<HTMLFormElement>,
-  ): void {
-    event.preventDefault();
-
+  function handleAdd(): void {
     const normalizedLabel = label.trim();
 
     if (!normalizedLabel) {
@@ -35,11 +30,17 @@ export function AdditionalFreightFieldForm({
     setLabel("");
   }
 
+  function handleKeyDown(
+    event: KeyboardEvent<HTMLInputElement>
+  ): void {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      handleAdd();
+    }
+  }
+
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="grid gap-4 sm:grid-cols-[1fr_auto] sm:items-end"
-    >
+    <div className="grid gap-4 sm:grid-cols-[1fr_auto] sm:items-end">
       <label className="block">
         <span
           className="mb-2 block text-sm font-medium"
@@ -51,9 +52,8 @@ export function AdditionalFreightFieldForm({
         <input
           type="text"
           value={label}
-          onChange={(event) =>
-            setLabel(event.target.value)
-          }
+          onChange={(event) => setLabel(event.target.value)}
+          onKeyDown={handleKeyDown}
           placeholder={fieldPlaceholder}
           className="w-full rounded-xl border border-[var(--color-border)] bg-[var(--color-background)] px-4 py-3 text-sm outline-none transition"
           style={{ color: "var(--color-text)" }}
@@ -61,7 +61,8 @@ export function AdditionalFreightFieldForm({
       </label>
 
       <button
-        type="submit"
+        type="button"
+        onClick={handleAdd}
         disabled={!label.trim()}
         className="min-h-11 rounded-xl px-5 py-3 text-sm font-semibold transition disabled:cursor-not-allowed disabled:opacity-50"
         style={{
@@ -71,6 +72,6 @@ export function AdditionalFreightFieldForm({
       >
         {addLabel}
       </button>
-    </form>
+    </div>
   );
 }

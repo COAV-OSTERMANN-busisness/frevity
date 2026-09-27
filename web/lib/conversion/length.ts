@@ -1,9 +1,10 @@
-export type LengthUnit = "mm" | "cm" | "m";
+export type LengthUnit = "mm" | "cm" | "m" | "km";
 
 const METERS_PER_UNIT: Readonly<Record<LengthUnit, number>> = {
   mm: 0.001,
   cm: 0.01,
   m: 1,
+  km: 1000,
 };
 
 function assertFiniteNonNegative(value: number, field: string): void {

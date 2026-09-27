@@ -1,7 +1,5 @@
 import { Advertising } from "@/components/advertising";
-
 import { CalculatorWorkspace } from "@/components/calculator";
-
 import { mockCalculationResult, mockFreightResult } from "@/mocks/calculation";
 
 export default function CalculatorPage() {
@@ -24,7 +22,6 @@ export default function CalculatorPage() {
 
       <CalculatorWorkspace
         landedCostResult={mockCalculationResult}
-        freightResult={mockFreightResult}
       />
     </div>
   );

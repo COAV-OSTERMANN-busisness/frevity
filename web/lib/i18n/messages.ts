@@ -233,6 +233,14 @@ export const messages = {
           remove: "Remove",
         },
         submit: "Calculate freight",
+        feedback: {
+          loading: "Calculating your freight...",
+          loadingDescription: "Please wait while we process your request.",
+          success: "Freight calculation completed.",
+          error:
+            "We couldn't calculate the freight for this request. Check the addresses and whether the selected transport mode supports the route. If the details are correct, please try again later.",
+          // retry: "Try again",
+        },
         result: {
           title: "Freight Calculation Result",
           description:
@@ -546,6 +554,14 @@ export const messages = {
           remove: "Eliminar",
         },
         submit: "Calcular flete",
+        feedback: {
+          loading: "Calculando tu flete...",
+          loadingDescription: "Espera mientras procesamos tu solicitud.",
+          success: "Cálculo de flete completado.",
+          error:
+            "No fue posible calcular el flete para esta solicitud. Verifica las direcciones y si el modo de transporte seleccionado permite realizar la ruta. Si los datos son correctos, inténtalo de nuevo más tarde.",
+          // retry: "Intentar de nuevo",
+        },
         result: {
           title: "Resultado del Cálculo de Flete",
           description:
@@ -859,6 +875,14 @@ export const messages = {
           remove: "Remover",
         },
         submit: "Calcular frete",
+        feedback: {
+          loading: "Calculando seu frete...",
+          loadingDescription: "Aguarde enquanto processamos sua solicitação.",
+          success: "Cálculo de frete concluído.",
+          error:
+            "Não foi possível calcular o frete para esta solicitação. Verifique os endereços informados e se o modal selecionado permite realizar o trajeto. Caso os dados estejam corretos, tente novamente mais tarde.",
+          // retry: "Tentar novamente",
+        },
         result: {
           title: "Resultado do Cálculo de Frete",
           description:
@@ -1166,6 +1190,15 @@ export const messages = {
           remove: "削除",
         },
         submit: "運賃を計算",
+        feedback: {
+          loading: "運賃を計算しています...",
+          loadingDescription:
+            "リクエストを処理しています。しばらくお待ちください。",
+          success: "運賃の計算が完了しました。",
+          error:
+            "今回の運賃を計算できませんでした。入力した住所と、選択した輸送モードでその経路を利用できるかご確認ください。入力内容に問題がない場合は、しばらくしてから再度お試しください。",
+          // retry: "再試行",
+        },
         result: {
           title: "運賃計算結果",
           description: "推定運賃と貨物計算の詳細を確認できます。",

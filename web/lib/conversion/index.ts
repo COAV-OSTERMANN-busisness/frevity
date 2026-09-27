@@ -9,3 +9,8 @@ export {
     cubicCentimetersToCubicMeters,
     type VolumeUnit,
   } from "./volume";
+
+  export {
+    convertMass,
+    type MassUnit,
+  } from "./mass";

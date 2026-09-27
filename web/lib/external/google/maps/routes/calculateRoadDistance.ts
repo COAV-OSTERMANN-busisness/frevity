@@ -59,6 +59,19 @@ export async function calculateRoadDistance(
     geocodeLocation(normalizedDestination),
   ]);
 
+  if (process.env.NODE_ENV === "development") {
+    console.info("Road distance geocoding:", {
+      origin: {
+        input: normalizedOrigin,
+        coordinates: originCoordinates,
+      },
+      destination: {
+        input: normalizedDestination,
+        coordinates: destinationCoordinates,
+      },
+    });
+  }
+
   const apiKey = getGoogleMapsApiKey();
 
   const response = await fetch(GOOGLE_ROUTES_URL, {
@@ -101,6 +114,11 @@ export async function calculateRoadDistance(
   }
 
   const data = (await response.json()) as GoogleRoutesResponse;
+
+  if (process.env.NODE_ENV === "development") {
+    console.info("Google Routes response:", data);
+  }
+
   const distanceMeters = data.routes?.[0]?.distanceMeters;
 
   if (!isValidDistance(distanceMeters)) {
