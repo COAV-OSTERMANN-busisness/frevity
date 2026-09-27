@@ -76,7 +76,7 @@ export function FreightCalculatorForm({
 
   const [tariffRate, setTariffRate] = useState(DEFAULT_ESTIMATED_TARIFF_RATE);
 
-  const [volumetricDivisor, setVolumetricDivisor] = useState("");
+  const [volumetricDivisor, setVolumetricDivisor] = useState("6000");
 
   const [maritimeType, setMaritimeType] = useState<MaritimeFreightType>("lcl");
 

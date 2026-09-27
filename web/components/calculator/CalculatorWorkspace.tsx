@@ -144,6 +144,18 @@ function buildFreightCalculationInput(
       throw new Error("Air freight volumetric divisor is required.");
     }
 
+    if (!Number.isSafeInteger(data.quantity) || data.quantity <= 0) {
+      throw new Error("Air freight quantity must be a positive safe integer.");
+    }
+
+    const totalVolumeM3 = volumeM3 * data.quantity;
+
+    if (!Number.isFinite(totalVolumeM3) || totalVolumeM3 <= 0) {
+      throw new Error(
+        "Total air freight volume must be a finite number greater than zero."
+      );
+    }
+
     const volumetricWeight = calculateVolumetricWeight({
       length: convertLength(lengthMeters, "m", "cm"),
       width: convertLength(widthMeters, "m", "cm"),
@@ -151,13 +163,23 @@ function buildFreightCalculationInput(
       divisor: data.volumetricDivisor,
     });
 
+    const totalVolumetricWeight = volumetricWeight.value * data.quantity;
+
+    if (!Number.isFinite(totalVolumetricWeight) || totalVolumetricWeight <= 0) {
+      throw new Error(
+        "Total volumetric weight must be a finite number greater than zero."
+      );
+    }
+
     return {
       scope: context.scope,
       mode: "air",
       route,
       air: {
         actualWeight: actualWeightKg,
-        volumetricWeight: volumetricWeight.value,
+        volumetricWeight: totalVolumetricWeight,
+        volume: totalVolumeM3,
+        quantity: data.quantity,
         tariff,
       },
       additionalCharges,

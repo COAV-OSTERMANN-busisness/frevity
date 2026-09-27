@@ -3,6 +3,8 @@ import type { FreightMoney, FreightTariff } from "./freightTariff";
 export interface AirFreightInput {
   actualWeight: number;
   volumetricWeight: number;
+  volume: number;
+  quantity: number;
   tariff: FreightTariff;
 }
 
