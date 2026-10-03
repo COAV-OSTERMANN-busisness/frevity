@@ -182,6 +182,39 @@ Frevity follows a **static-first hybrid rendering strategy**:
 -   rendering decisions should follow the responsibility of each
     surface.
 
+## Deployment and Domain Management
+
+Frevity separates application deployment from domain registration and DNS
+management.
+
+The current production infrastructure responsibilities are:
+
+| Responsibility | Provider |
+| --- | --- |
+| Application hosting and deployment | Netlify |
+| Domain registrar | Cloudflare |
+| Authoritative DNS management | Cloudflare |
+| Production domain | `freevity.app` |
+
+### Netlify
+
+Netlify is responsible for hosting and deploying the Frevity web
+application.
+
+The production deployment is connected to the project repository and
+serves the Next.js application.
+
+Application deployment configuration, build execution, deployment status,
+and production hosting are managed through Netlify.
+
+### Cloudflare
+
+Cloudflare is responsible for the registration and authoritative DNS
+management of the production domain:
+
+```text
+freevity.app
+
 ## Git Workflow
 
 ``` text
@@ -287,4 +320,4 @@ This keeps the repository, implementation, and planning aligned.
 
 ------------------------------------------------------------------------
 
-**Frevity --- MVP Project Foundation**
+&reg;2026 Frevity have all rights.
