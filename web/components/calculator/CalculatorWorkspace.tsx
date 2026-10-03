@@ -56,6 +56,7 @@ interface FreightFormData {
   volumetricDivisor?: number;
   maritimeType?: MaritimeFreightType;
   containerQuantity?: number;
+  minimumCharge?: number;
   additionalCharges: AdditionalFreightCharge[];
 }
 
@@ -105,6 +106,14 @@ function buildFreightCalculationInput(
       amount: data.tariffRate,
       currency: context.currency,
     },
+    ...(data.mode === "maritime" && data.minimumCharge !== undefined
+      ? {
+          minimumCharge: {
+            amount: data.minimumCharge,
+            currency: context.currency,
+          },
+        }
+      : {}),
   };
 
   const additionalCharges = data.additionalCharges.map((charge) => ({
@@ -210,6 +219,18 @@ function buildFreightCalculationInput(
     };
   }
 
+  if (!Number.isSafeInteger(data.quantity) || data.quantity <= 0) {
+    throw new Error("LCL freight quantity must be a positive safe integer.");
+  }
+
+  const totalVolumeM3 = volumeM3 * data.quantity;
+
+  if (!Number.isFinite(totalVolumeM3) || totalVolumeM3 <= 0) {
+    throw new Error(
+      "Total LCL freight volume must be a finite number greater than zero."
+    );
+  }
+
   return {
     scope: context.scope,
     mode: "maritime",
@@ -218,7 +239,7 @@ function buildFreightCalculationInput(
       type: "lcl",
       lcl: {
         actualWeight: actualWeightKg,
-        volume: volumeM3,
+        volume: totalVolumeM3,
         tariff,
       },
     },

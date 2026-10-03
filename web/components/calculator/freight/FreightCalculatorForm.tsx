@@ -1,4 +1,3 @@
-
 "use client";
 
 import { FormEvent, useState } from "react";
@@ -35,6 +34,7 @@ interface FreightCalculatorFormData {
   volumetricDivisor?: number;
   maritimeType?: MaritimeFreightType;
   containerQuantity?: number;
+  minimumCharge?: number;
   additionalCharges: AdditionalFreightCharge[];
 }
 
@@ -81,6 +81,8 @@ export function FreightCalculatorForm({
   const [maritimeType, setMaritimeType] = useState<MaritimeFreightType>("lcl");
 
   const [containerQuantity, setContainerQuantity] = useState("1");
+
+  const [minimumCharge, setMinimumCharge] = useState("");
 
   const [additionalCharges, setAdditionalCharges] = useState<
     AdditionalFreightCharge[]
@@ -131,7 +133,7 @@ export function FreightCalculatorForm({
     }
 
     if (nextMode === "maritime") {
-      setTariffBasis(maritimeType === "fcl" ? "unit" : "volume");
+      setTariffBasis(maritimeType === "fcl" ? "unit" : "chargeableWeight");
       return;
     }
 
@@ -140,7 +142,7 @@ export function FreightCalculatorForm({
 
   function handleMaritimeTypeChange(nextType: MaritimeFreightType): void {
     setMaritimeType(nextType);
-    setTariffBasis(nextType === "fcl" ? "unit" : "volume");
+    setTariffBasis(nextType === "fcl" ? "unit" : "chargeableWeight");
   }
 
   function handleSubmit(event: FormEvent<HTMLFormElement>): void {
@@ -174,6 +176,11 @@ export function FreightCalculatorForm({
       ...(mode === "maritime"
         ? {
             maritimeType,
+            ...(minimumCharge.trim() !== ""
+              ? {
+                  minimumCharge: Number(minimumCharge),
+                }
+              : {}),
             ...(maritimeType === "fcl"
               ? {
                   containerQuantity: Number(containerQuantity),
@@ -403,13 +410,47 @@ export function FreightCalculatorForm({
               className={inputClassName}
               style={{ color: "var(--color-text)" }}
             >
-              <option value="weight">{translations.tariffBasis.weight}</option>
-              <option value="volume">{translations.tariffBasis.volume}</option>
-              <option value="chargeableWeight">
-                {translations.tariffBasis.chargeableWeight}
-              </option>
-              <option value="unit">{translations.tariffBasis.unit}</option>
-              <option value="flat">{translations.tariffBasis.flat}</option>
+              {mode === "maritime" ? (
+                maritimeType === "fcl" ? (
+                  <>
+                    <option value="unit">
+                      {translations.tariffBasis.unit}
+                    </option>
+                    <option value="flat">
+                      {translations.tariffBasis.flat}
+                    </option>
+                  </>
+                ) : (
+                  <>
+                    <option value="chargeableWeight">
+                      {translations.tariffBasis.maritimeWeightMeasurement}
+                    </option>
+                    <option value="weight">
+                      {translations.tariffBasis.weight}
+                    </option>
+                    <option value="volume">
+                      {translations.tariffBasis.volume}
+                    </option>
+                    <option value="flat">
+                      {translations.tariffBasis.flat}
+                    </option>
+                  </>
+                )
+              ) : (
+                <>
+                  <option value="weight">
+                    {translations.tariffBasis.weight}
+                  </option>
+                  <option value="volume">
+                    {translations.tariffBasis.volume}
+                  </option>
+                  <option value="chargeableWeight">
+                    {translations.tariffBasis.chargeableWeight}
+                  </option>
+                  <option value="unit">{translations.tariffBasis.unit}</option>
+                  <option value="flat">{translations.tariffBasis.flat}</option>
+                </>
+              )}
             </select>
           </label>
         </div>
@@ -533,6 +574,27 @@ export function FreightCalculatorForm({
             {translations.fields.tariffEstimate}
           </span>
         </label>
+
+        {mode === "maritime" && (
+          <label className="block">
+            <span
+              className="mb-2 block text-sm font-medium"
+              style={{ color: "var(--color-text)" }}
+            >
+              {translations.fields.minimumCharge}
+            </span>
+
+            <input
+              min="0"
+              step="0.01"
+              type="number"
+              value={minimumCharge}
+              onChange={(event) => setMinimumCharge(event.target.value)}
+              className={inputClassName}
+              style={{ color: "var(--color-text)" }}
+            />
+          </label>
+        )}
 
         <div className="border-t border-[var(--color-border)] pt-6">
           <AdditionalFreightFieldForm

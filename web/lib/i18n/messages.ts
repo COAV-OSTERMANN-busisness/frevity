@@ -206,6 +206,7 @@ export const messages = {
           maritimeType: "Maritime shipment type",
           containerQuantity: "Container quantity",
           volumetricDivisor: "Volumetric divisor",
+          minimumCharge: "Minimum freight (optional)",
           tariffEstimate:
             "Estimated reference tariff. Replace it with your carrier's tariff when available.",
         },
@@ -222,6 +223,7 @@ export const messages = {
           weight: "Weight",
           volume: "Volume",
           chargeableWeight: "Chargeable weight",
+          maritimeWeightMeasurement: "Weight or measurement (W/M)",
           unit: "Unit",
           flat: "Flat rate",
         },
@@ -527,6 +529,7 @@ export const messages = {
           maritimeType: "Tipo de envío marítimo",
           containerQuantity: "Cantidad de contenedores",
           volumetricDivisor: "Divisor volumétrico",
+          minimumCharge: "Flete mínimo (opcional)",
           tariffEstimate:
             "Tarifa de referencia estimada. Sustitúyela por la tarifa de tu transportista cuando esté disponible.",
         },
@@ -543,6 +546,7 @@ export const messages = {
           weight: "Peso",
           volume: "Volumen",
           chargeableWeight: "Peso facturable",
+          maritimeWeightMeasurement: "Peso o medida (W/M)",
           unit: "Unidad",
           flat: "Tarifa fija",
         },
@@ -848,6 +852,7 @@ export const messages = {
           maritimeType: "Tipo de embarque marítimo",
           containerQuantity: "Quantidade de contêineres",
           volumetricDivisor: "Divisor volumétrico",
+          minimumCharge: "Frete mínimo (opcional)",
           tariffEstimate:
             "Tarifa referencial estimada. Substitua pela tarifa da transportadora quando disponível.",
         },
@@ -864,6 +869,7 @@ export const messages = {
           weight: "Peso",
           volume: "Volume",
           chargeableWeight: "Peso tarifável",
+          maritimeWeightMeasurement: "Peso ou medida (W/M)",
           unit: "Unidade",
           flat: "Tarifa fixa",
         },
@@ -1163,6 +1169,7 @@ export const messages = {
           maritimeType: "海上輸送タイプ",
           containerQuantity: "コンテナ数量",
           volumetricDivisor: "容積重量除数",
+          minimumCharge: "最低運賃（任意）",
           tariffEstimate:
             "参考推定料金です。運送会社の料金がわかる場合は置き換えてください。",
         },
@@ -1179,6 +1186,7 @@ export const messages = {
           weight: "重量",
           volume: "容積",
           chargeableWeight: "課金重量",
+          maritimeWeightMeasurement: "重量または容積（W/M）",
           unit: "単位",
           flat: "固定料金",
         },

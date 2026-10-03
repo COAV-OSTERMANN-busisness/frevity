@@ -9,6 +9,12 @@ function assertPositiveFinite(value: number, field: string): void {
   }
 }
 
+function assertFiniteNonNegative(value: number, field: string): void {
+  if (!Number.isFinite(value) || value < 0) {
+    throw new Error(`${field} must be a finite non-negative number.`);
+  }
+}
+
 export function calculateMaritimeLcl(
   input: MaritimeLclInput
 ): MaritimeFreightResult {
@@ -64,7 +70,7 @@ export function calculateMaritimeLcl(
       throw new Error("Minimum charge currency must match tariff currency.");
     }
 
-    assertPositiveFinite(tariff.minimumCharge.amount, "Minimum charge");
+    assertFiniteNonNegative(tariff.minimumCharge.amount, "Minimum charge");
 
     amount = Math.max(amount, tariff.minimumCharge.amount);
   }
