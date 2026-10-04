@@ -7,8 +7,13 @@
     "paths": {
       "@/lib/calculation/*": ["../web/lib/calculation/*"],
       "@/types/*": ["../web/types/*"]
-    }
+    },
+    "types": ["cypress", "node"]
   },
-  "include": ["unit/**/*.ts"],
+  "include": [
+    "unit/**/*.ts",
+    "cypress/**/*.ts",
+    "cypress.config.ts"
+  ],
   "exclude": ["dist", "node_modules"]
 }
