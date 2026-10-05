@@ -216,12 +216,6 @@ When(
       );
     }
 
-    /*
-     * Selects principais:
-     * 0 = transport mode
-     * 1 = maritime type
-     * 2 = tariff basis
-     */
     getMainSelect(2).select(value);
     getMainSelect(2).should("have.value", value);
   },
@@ -252,10 +246,6 @@ When(
 When(
   "I add the maritime charge {string} with amount {string}",
   (label: string, amount: string) => {
-    cy.contains("button", "Add additional charge")
-      .should("be.visible")
-      .click();
-
     getFreightForm()
       .find('input[type="text"]')
       .last()
@@ -264,10 +254,18 @@ When(
       .should("have.value", label);
 
     getFreightForm()
-      .find('input[type="number"]')
+      .find('input[type="text"]')
       .last()
-      .clear()
-      .type(amount)
+      .closest("div")
+      .find('button[type="button"]')
+      .should("be.enabled")
+      .click();
+
+    getFreightForm()
+      .find(`input[type="number"][aria-label^="${label} - "]`)
+      .should("be.visible")
+      .should("have.value", "0")
+      .type(`{selectall}${amount}`)
       .should("have.value", amount);
   },
 );
