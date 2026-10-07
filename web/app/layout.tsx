@@ -5,6 +5,7 @@ import type { ReactNode } from "react";
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
 import { I18nProvider } from "@/components/providers/i18n";
+import { messages } from "@/lib/i18n/messages";
 
 import "./globals.css";
 
@@ -40,13 +41,39 @@ const footerLinks = [
   },
 ] as const;
 
+const seo = messages.en.seo.home;
+
 export const metadata: Metadata = {
-  title: {
-    default: "Frevity",
-    template: "%s | Frevity",
+  metadataBase: new URL("https://frevity.app"),
+
+  title: seo.title,
+
+  description: seo.description,
+
+  alternates: {
+    canonical: "/",
   },
-  description:
-    "Frevity provides a precise and reliable calculation experience.",
+
+  robots: {
+    index: true,
+    follow: true,
+  },
+
+  openGraph: {
+    type: "website",
+    url: "/",
+    siteName: "Frevity",
+    title: seo.title,
+    description: seo.description,
+    locale: "en_US",
+    alternateLocale: ["es_ES", "pt_BR", "ja_JP"],
+  },
+
+  twitter: {
+    card: "summary",
+    title: seo.title,
+    description: seo.description,
+  },
 };
 
 interface RootLayoutProps {

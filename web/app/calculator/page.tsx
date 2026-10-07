@@ -1,6 +1,30 @@
+import type { Metadata } from "next";
+
 import { Advertising } from "@/components/advertising";
 import { CalculatorWorkspace } from "@/components/calculator";
-import { mockCalculationResult, mockFreightResult } from "@/mocks/calculation";
+import { mockCalculationResult } from "@/mocks/calculation";
+
+export const metadata: Metadata = {
+  title: "Freight Cost Calculator & Shipping Cost Estimator",
+  description:
+    "Estimate freight and shipping costs for road, air, and maritime shipments with the Frevity freight cost calculator.",
+  alternates: {
+    canonical: "/calculator",
+  },
+  openGraph: {
+    type: "website",
+    url: "/calculator",
+    title: "Freight Cost Calculator & Shipping Cost Estimator | Frevity",
+    description:
+      "Estimate freight and shipping costs for road, air, and maritime shipments with Frevity.",
+  },
+  twitter: {
+    card: "summary",
+    title: "Freight Cost Calculator & Shipping Cost Estimator | Frevity",
+    description:
+      "Estimate freight and shipping costs for road, air, and maritime shipments with Frevity.",
+  },
+};
 
 export default function CalculatorPage() {
   return (

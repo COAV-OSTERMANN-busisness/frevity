@@ -17,6 +17,19 @@ export const messages = {
       },
     },
 
+    seo: {
+      home: {
+        title: "Frevity | Freight & Landed Cost Calculator",
+        description:
+          "Estimate freight, shipping, import, and landed costs with Frevity for road, air, and maritime shipments.",
+      },
+      calculator: {
+        title: "Freight Cost Calculator & Shipping Cost Estimator",
+        description:
+          "Estimate freight, shipping, import, and landed costs for road, air, and maritime shipments with Frevity.",
+      },
+    },
+
     notFound: {
       code: "404",
       title: "Page not found",
@@ -337,6 +350,19 @@ export const messages = {
         copyright: "© 2026 freevity. Todos los derechos reservados.",
         navigationTitle: "Navegación",
         socialTitle: "Síguenos en nuestras redes sociales",
+      },
+    },
+
+    seo: {
+      home: {
+        title: "Frevity | Calculadora de Flete y Costo Puesto en Destino",
+        description:
+          "Estima costos de flete, envío, importación y costo puesto en destino con Frevity para transporte terrestre, aéreo y marítimo.",
+      },
+      calculator: {
+        title: "Calculadora de Costos de Flete y Envío",
+        description:
+          "Estima costos de flete, envío, importación y costo puesto en destino para transporte terrestre, aéreo y marítimo con Frevity.",
       },
     },
 
@@ -663,6 +689,19 @@ export const messages = {
       },
     },
 
+    seo: {
+      home: {
+        title: "Frevity | Calculadora de Frete e Custo de Importação",
+        description:
+          "Estime custos de frete, transporte, importação e custo total da remessa com o Frevity para os modais rodoviário, aéreo e marítimo.",
+      },
+      calculator: {
+        title: "Calculadora de Frete e Estimador de Custos de Transporte",
+        description:
+          "Estime custos de frete, transporte, importação e custo total da remessa para os modais rodoviário, aéreo e marítimo com o Frevity.",
+      },
+    },
+
     notFound: {
       code: "404",
       title: "Página não encontrada",
@@ -983,6 +1022,19 @@ export const messages = {
         copyright: "© 2026 freevity. 無断転載・複製を禁じます。",
         navigationTitle: "ナビゲーション",
         socialTitle: "ソーシャルメディアでフォローする",
+      },
+    },
+
+    seo: {
+      home: {
+        title: "Frevity | 運賃・輸入コスト計算ツール",
+        description:
+          "Frevityで陸上・航空・海上輸送の運賃、輸送費、輸入費用、着地原価を見積もることができます。",
+      },
+      calculator: {
+        title: "運賃計算・輸送コスト見積もりツール",
+        description:
+          "Frevityで陸上・航空・海上輸送の運賃、輸送費、輸入費用、着地原価を見積もることができます。",
       },
     },
 
