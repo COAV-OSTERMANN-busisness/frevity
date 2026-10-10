@@ -66,7 +66,6 @@ export const metadata: Metadata = {
     title: seo.title,
     description: seo.description,
     locale: "en_US",
-    alternateLocale: ["es_ES", "pt_BR", "ja_JP"],
   },
 
   twitter: {
