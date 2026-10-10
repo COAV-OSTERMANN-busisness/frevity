@@ -26,9 +26,35 @@ export const metadata: Metadata = {
   },
 };
 
+const softwareStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "@id": "https://frevity.app/calculator#software",
+  name: "Frevity Freight Cost Calculator",
+  url: "https://frevity.app/calculator",
+  description:
+    "Estimate freight and shipping costs for road, air, and maritime shipments with the Frevity freight cost calculator.",
+  applicationCategory: "BusinessApplication",
+  operatingSystem: "Web",
+  inLanguage: "en",
+  isPartOf: {
+    "@id": "https://frevity.app/#website",
+  },
+};
+
 export default function CalculatorPage() {
   return (
     <div className="flex flex-1 flex-col">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(softwareStructuredData).replace(
+            /</g,
+            "\\u003c"
+          ),
+        }}
+      />
+
       <section
         aria-label="Advertising"
         className="border-b border-[var(--color-border)] bg-[var(--color-background)] px-4 py-8 sm:px-6 lg:px-8"
@@ -37,16 +63,11 @@ export default function CalculatorPage() {
           className="mx-auto flex min-h-32 w-full max-w-7xl items-center justify-center rounded-xl border border-dashed border-[var(--color-border)] bg-[var(--color-surface)]"
           style={{ marginTop: "3rem" }}
         >
-          <Advertising
-            provider="google"
-            format="banner"
-          />
+          <Advertising provider="google" format="banner" />
         </div>
       </section>
 
-      <CalculatorWorkspace
-        landedCostResult={mockCalculationResult}
-      />
+      <CalculatorWorkspace landedCostResult={mockCalculationResult} />
     </div>
   );
 }
