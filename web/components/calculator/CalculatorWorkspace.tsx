@@ -28,12 +28,12 @@ import type { AdditionalFreightCharge } from "@/types/calculation/freight/additi
 import type { MaritimeFreightType } from "@/types/calculation/freight/maritimeFreight";
 import type { FreightTariffBasis } from "@/types/calculation/freight/freightTariff";
 
-import { CalculatorForm } from "./landed/CalculatorForm";
 import { FreightCalculatorForm } from "./freight";
-import { CalculatorSwitcher, type CalculatorType } from "./CalculatorSwitcher";
 import { CalculatorResult } from "./CalculatorResult";
 
 interface CalculatorWorkspaceProps {
+  // Mantido para compatibilidade com app/calculator/page.tsx.
+  // Reservado para a futura reativação do Landed Cost.
   landedCostResult?: CalculationResult;
   freightResult?: FreightResult;
 }
@@ -56,7 +56,6 @@ interface FreightFormData {
   volumetricDivisor?: number;
   maritimeType?: MaritimeFreightType;
   containerQuantity?: number;
-  minimumCharge?: number;
   additionalCharges: AdditionalFreightCharge[];
 }
 
@@ -106,14 +105,6 @@ function buildFreightCalculationInput(
       amount: data.tariffRate,
       currency: context.currency,
     },
-    ...(data.mode === "maritime" && data.minimumCharge !== undefined
-      ? {
-          minimumCharge: {
-            amount: data.minimumCharge,
-            currency: context.currency,
-          },
-        }
-      : {}),
   };
 
   const additionalCharges = data.additionalCharges.map((charge) => ({
@@ -153,18 +144,6 @@ function buildFreightCalculationInput(
       throw new Error("Air freight volumetric divisor is required.");
     }
 
-    if (!Number.isSafeInteger(data.quantity) || data.quantity <= 0) {
-      throw new Error("Air freight quantity must be a positive safe integer.");
-    }
-
-    const totalVolumeM3 = volumeM3 * data.quantity;
-
-    if (!Number.isFinite(totalVolumeM3) || totalVolumeM3 <= 0) {
-      throw new Error(
-        "Total air freight volume must be a finite number greater than zero."
-      );
-    }
-
     const volumetricWeight = calculateVolumetricWeight({
       length: convertLength(lengthMeters, "m", "cm"),
       width: convertLength(widthMeters, "m", "cm"),
@@ -172,22 +151,14 @@ function buildFreightCalculationInput(
       divisor: data.volumetricDivisor,
     });
 
-    const totalVolumetricWeight = volumetricWeight.value * data.quantity;
-
-    if (!Number.isFinite(totalVolumetricWeight) || totalVolumetricWeight <= 0) {
-      throw new Error(
-        "Total volumetric weight must be a finite number greater than zero."
-      );
-    }
-
     return {
       scope: context.scope,
       mode: "air",
       route,
       air: {
         actualWeight: actualWeightKg,
-        volumetricWeight: totalVolumetricWeight,
-        volume: totalVolumeM3,
+        volumetricWeight: volumetricWeight.value,
+        volume: volumeM3 * data.quantity,
         quantity: data.quantity,
         tariff,
       },
@@ -219,18 +190,6 @@ function buildFreightCalculationInput(
     };
   }
 
-  if (!Number.isSafeInteger(data.quantity) || data.quantity <= 0) {
-    throw new Error("LCL freight quantity must be a positive safe integer.");
-  }
-
-  const totalVolumeM3 = volumeM3 * data.quantity;
-
-  if (!Number.isFinite(totalVolumeM3) || totalVolumeM3 <= 0) {
-    throw new Error(
-      "Total LCL freight volume must be a finite number greater than zero."
-    );
-  }
-
   return {
     scope: context.scope,
     mode: "maritime",
@@ -239,7 +198,7 @@ function buildFreightCalculationInput(
       type: "lcl",
       lcl: {
         actualWeight: actualWeightKg,
-        volume: totalVolumeM3,
+        volume: volumeM3,
         tariff,
       },
     },
@@ -305,13 +264,9 @@ async function resolveCountries(data: FreightFormData): Promise<{
 }
 
 export function CalculatorWorkspace({
-  landedCostResult,
   freightResult,
 }: CalculatorWorkspaceProps) {
   const { locale } = useI18n();
-
-  const [activeCalculator, setActiveCalculator] =
-    useState<CalculatorType>("freight");
 
   const [calculatedFreightResult, setCalculatedFreightResult] = useState<
     FreightResult | undefined
@@ -328,7 +283,7 @@ export function CalculatorWorkspace({
   const calculatorTranslations = messages[locale].calculator;
 
   useEffect(() => {
-    if (freightStatus !== "success" || activeCalculator !== "freight") {
+    if (freightStatus !== "success") {
       return;
     }
 
@@ -340,7 +295,7 @@ export function CalculatorWorkspace({
     freightResultRef.current?.focus({
       preventScroll: true,
     });
-  }, [freightStatus, activeCalculator]);
+  }, [freightStatus]);
 
   useEffect(() => {
     if (freightStatus !== "success" || !showFreightFeedback) {
@@ -399,132 +354,104 @@ export function CalculatorWorkspace({
 
   return (
     <>
-      <section
-        aria-label="Calculator selector"
-        className="border-b border-[var(--color-border)] bg-[var(--color-background)] px-4 pt-8 sm:px-6 lg:px-8"
-      >
-        <div className="mx-auto w-full max-w-5xl">
-          <CalculatorSwitcher
-            activeCalculator={activeCalculator}
-            onChange={setActiveCalculator}
-            freightLabel={calculatorTranslations.freight.title}
-            landedCostLabel={calculatorTranslations.form.title}
-          />
-        </div>
-      </section>
+      {/*
+        Reserva para futura reativação do CalculatorSwitcher
+        e do formulário Landed Cost.
+
+        No momento, apenas Freight permanece ativo.
+        O formulário Landed Cost não é importado nem renderizado.
+      */}
 
       <section
         aria-label="Calculator"
         className="border-b border-[var(--color-border)] bg-[var(--color-background)] px-4 py-12 sm:px-6 lg:px-8"
       >
         <div className="mx-auto w-full max-w-5xl">
-          {activeCalculator === "freight" ? (
-            <>
-              <FreightCalculatorForm
-                onSubmit={handleFreightSubmit}
-                isLoading={freightStatus === "loading"}
-              />
+          <FreightCalculatorForm
+            onSubmit={handleFreightSubmit}
+            isLoading={freightStatus === "loading"}
+          />
 
-              {freightStatus === "loading" && (
-                <div
-                  role="status"
-                  aria-live="polite"
-                  className="mt-6 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-5"
-                >
-                  <div className="flex items-center gap-3">
-                    <span
-                      aria-hidden="true"
-                      className="inline-block h-5 w-5 animate-spin rounded-full border-2 border-blue-200 border-t-blue-600"
-                    />
+          {freightStatus === "loading" && (
+            <div
+              role="status"
+              aria-live="polite"
+              className="mt-6 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-5"
+            >
+              <div className="flex items-center gap-3">
+                <span
+                  aria-hidden="true"
+                  className="inline-block h-5 w-5 animate-spin rounded-full border-2 border-blue-200 border-t-blue-600"
+                />
 
-                    <div>
-                      <p className="font-semibold">
-                        {calculatorTranslations.freight.feedback.loading}
-                      </p>
+                <div>
+                  <p className="font-semibold">
+                    {calculatorTranslations.freight.feedback.loading}
+                  </p>
 
-                      <p className="mt-1 text-sm">
-                        {
-                          calculatorTranslations.freight.feedback
-                            .loadingDescription
-                        }
-                      </p>
-                    </div>
-                  </div>
+                  <p className="mt-1 text-sm">
+                    {calculatorTranslations.freight.feedback.loadingDescription}
+                  </p>
                 </div>
-              )}
+              </div>
+            </div>
+          )}
 
-              {freightStatus === "error" && showFreightFeedback && (
-                <div
-                  role="alert"
-                  className="mt-6 flex items-start justify-between gap-4 rounded-xl border border-red-300 bg-red-50 p-5 text-red-800"
-                >
-                  <div>
-                    <p className="font-medium">
-                      {calculatorTranslations.freight.feedback.error}
-                    </p>
+          {freightStatus === "error" && showFreightFeedback && (
+            <div
+              role="alert"
+              className="mt-6 flex items-start justify-between gap-4 rounded-xl border border-red-300 bg-red-50 p-5 text-red-800"
+            >
+              <div>
+                <p className="font-medium">
+                  {calculatorTranslations.freight.feedback.error}
+                </p>
 
-                    {/* <p className="mt-2 text-sm">
-                      {calculatorTranslations.freight.feedback.retry}
-                    </p> */}
-                  </div>
+                {/* <p className="mt-2 text-sm">
+                  {calculatorTranslations.freight.feedback.retry}
+                </p> */}
+              </div>
 
-                  <button
-                    type="button"
-                    onClick={() => setShowFreightFeedback(false)}
-                    aria-label="Fechar"
-                    className="shrink-0 rounded p-1 text-red-800 transition hover:bg-red-100 focus-visible:outline-2 focus-visible:outline-offset-2"
-                  >
-                    <span aria-hidden="true">×</span>
-                  </button>
-                </div>
-              )}
-            </>
-          ) : (
-            <CalculatorForm />
+              <button
+                type="button"
+                onClick={() => setShowFreightFeedback(false)}
+                aria-label="Fechar"
+                className="shrink-0 rounded p-1 text-red-800 transition hover:bg-red-100 focus-visible:outline-2 focus-visible:outline-offset-2"
+              >
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
           )}
         </div>
       </section>
 
-      {activeCalculator === "freight" &&
-        calculatedFreightResult &&
-        freightStatus === "success" && (
-          <section
-            ref={freightResultRef}
-            tabIndex={-1}
-            aria-label="Freight simulation result"
-            className="bg-[var(--color-surface)] px-4 py-12 outline-none sm:px-6 lg:px-8"
-          >
-            <div className="mx-auto w-full max-w-5xl">
-              {showFreightFeedback && (
-                <div
-                  role="status"
-                  className="mb-5 flex items-center justify-between gap-4 rounded-lg border border-green-300 bg-green-50 px-4 py-3 text-sm font-medium text-green-800"
-                >
-                  <span>{calculatorTranslations.freight.feedback.success}</span>
-
-                  <button
-                    type="button"
-                    onClick={() => setShowFreightFeedback(false)}
-                    aria-label="Fechar"
-                    className="shrink-0 rounded p-1 text-green-800 transition hover:bg-green-100 focus-visible:outline-2 focus-visible:outline-offset-2"
-                  >
-                    <span aria-hidden="true">×</span>
-                  </button>
-                </div>
-              )}
-
-              <CalculatorResult result={calculatedFreightResult} />
-            </div>
-          </section>
-        )}
-
-      {activeCalculator === "landedCost" && landedCostResult && (
+      {calculatedFreightResult && freightStatus === "success" && (
         <section
-          aria-label="Simulation result"
-          className="bg-[var(--color-surface)] px-4 py-12 sm:px-6 lg:px-8"
+          ref={freightResultRef}
+          tabIndex={-1}
+          aria-label="Freight simulation result"
+          className="bg-[var(--color-surface)] px-4 py-12 outline-none sm:px-6 lg:px-8"
         >
           <div className="mx-auto w-full max-w-5xl">
-            <CalculatorResult result={landedCostResult} />
+            {showFreightFeedback && (
+              <div
+                role="status"
+                className="mb-5 flex items-center justify-between gap-4 rounded-lg border border-green-300 bg-green-50 px-4 py-3 text-sm font-medium text-green-800"
+              >
+                <span>{calculatorTranslations.freight.feedback.success}</span>
+
+                <button
+                  type="button"
+                  onClick={() => setShowFreightFeedback(false)}
+                  aria-label="Fechar"
+                  className="shrink-0 rounded p-1 text-green-800 transition hover:bg-green-100 focus-visible:outline-2 focus-visible:outline-offset-2"
+                >
+                  <span aria-hidden="true">×</span>
+                </button>
+              </div>
+            )}
+
+            <CalculatorResult result={calculatedFreightResult} />
           </div>
         </section>
       )}

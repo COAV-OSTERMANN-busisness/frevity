@@ -46,6 +46,7 @@ export function Hero({ locale }: HeroProps) {
               fill
               className="object-cover"
               priority
+              fetchPriority="high"
               sizes="(max-width: 1023px) 100vw, 50vw"
             />
           </div>
