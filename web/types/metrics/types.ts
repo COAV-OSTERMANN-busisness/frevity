@@ -1,4 +1,7 @@
-export type OperationalMetricName = "calculation_completed";
+export type OperationalMetricName =
+  | "landing_view"
+  | "calculator_open"
+  | "calculation_completed";
 
 export interface MetricCounter {
   event: OperationalMetricName;

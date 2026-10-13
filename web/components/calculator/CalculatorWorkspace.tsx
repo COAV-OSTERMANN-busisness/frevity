@@ -304,6 +304,31 @@ async function resolveCountries(data: FreightFormData): Promise<{
   };
 }
 
+async function recordCompletedCalculation(): Promise<void> {
+  try {
+    const response = await fetch("/api/metrics", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        event: "calculation_completed",
+      }),
+      cache: "no-store",
+      keepalive: true,
+    });
+
+    if (!response.ok) {
+      console.warn(
+        "Operational metric was not recorded:",
+        response.status
+      );
+    }
+  } catch {
+    console.warn("Operational metrics service is unavailable.");
+  }
+}
+
 export function CalculatorWorkspace({
   landedCostResult,
   freightResult,
@@ -386,6 +411,8 @@ export function CalculatorWorkspace({
       setCalculatedFreightResult(result);
       setShowFreightFeedback(true);
       setFreightStatus("success");
+
+      void recordCompletedCalculation();
     } catch (error) {
       console.error("Freight calculation failed:", error);
 
@@ -395,6 +422,8 @@ export function CalculatorWorkspace({
     } finally {
       freightSubmissionInProgress.current = false;
     }
+
+
   }
 
   return (

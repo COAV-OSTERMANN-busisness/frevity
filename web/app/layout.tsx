@@ -6,6 +6,7 @@ import {
   AnalyticsPageTracker,
   AnalyticsProvider,
   GoogleAnalytics,
+  OperationalPageTracker,
 } from "@/components/analytics";
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
@@ -71,6 +72,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
             <AnalyticsProvider>
               <GoogleAnalytics />
               <AnalyticsPageTracker />
+              <OperationalPageTracker />
 
               <div className="flex min-h-screen flex-col">
                 <Header navigation={navigation} />

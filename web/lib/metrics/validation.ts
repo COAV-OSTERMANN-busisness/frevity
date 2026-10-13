@@ -6,6 +6,8 @@ import type {
 } from "@/types/metrics";
 
 const OPERATIONAL_METRICS = [
+  "landing_view",
+  "calculator_open",
   "calculation_completed",
 ] as const satisfies readonly OperationalMetricName[];
 
