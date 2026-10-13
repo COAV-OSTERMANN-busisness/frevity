@@ -1,0 +1,1 @@
+export { getAdminFirestore } from "./admin";

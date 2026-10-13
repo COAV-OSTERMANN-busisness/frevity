@@ -2,8 +2,14 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import type { ReactNode } from "react";
 
+import {
+  AnalyticsPageTracker,
+  AnalyticsProvider,
+  GoogleAnalytics,
+} from "@/components/analytics";
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
+import { ConsentBanner, ConsentProvider } from "@/components/privacy";
 import { I18nProvider } from "@/components/providers/i18n";
 
 import "./globals.css";
@@ -61,13 +67,22 @@ export default function RootLayout({ children }: RootLayoutProps) {
     >
       <body className="min-h-full bg-[var(--color-background)] font-sans text-[var(--color-text)]">
         <I18nProvider>
-          <div className="flex min-h-screen flex-col">
-            <Header navigation={navigation} />
+          <ConsentProvider>
+            <AnalyticsProvider>
+              <GoogleAnalytics />
+              <AnalyticsPageTracker />
 
-            <main className="flex flex-1 flex-col">{children}</main>
+              <div className="flex min-h-screen flex-col">
+                <Header navigation={navigation} />
 
-            <Footer links={footerLinks} />
-          </div>
+                <main className="flex flex-1 flex-col">{children}</main>
+
+                <Footer links={footerLinks} />
+              </div>
+
+              <ConsentBanner />
+            </AnalyticsProvider>
+          </ConsentProvider>
         </I18nProvider>
       </body>
     </html>
