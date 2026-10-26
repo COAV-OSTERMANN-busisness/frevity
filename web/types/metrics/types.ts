@@ -1,7 +1,11 @@
+
 export type OperationalMetricName =
   | "landing_view"
   | "calculator_open"
-  | "calculation_completed";
+  | "calculation_started"
+  | "calculation_completed"
+  | "language_changed"
+  | "result_shared";
 
 export interface MetricCounter {
   event: OperationalMetricName;

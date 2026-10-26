@@ -1,3 +1,4 @@
+
 import "server-only";
 
 import type {
@@ -8,7 +9,10 @@ import type {
 const OPERATIONAL_METRICS = [
   "landing_view",
   "calculator_open",
+  "calculation_started",
   "calculation_completed",
+  "language_changed",
+  "result_shared",
 ] as const satisfies readonly OperationalMetricName[];
 
 const DATE_PATTERN = /^\d{4}-\d{2}-\d{2}$/;
@@ -28,7 +32,6 @@ export function isValidMetricDate(value: unknown): value is string {
   }
 
   const [year, month, day] = value.split("-").map(Number);
-
   const parsed = new Date(Date.UTC(year, month - 1, day));
 
   return (

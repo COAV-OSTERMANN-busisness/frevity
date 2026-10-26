@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { useAnalytics } from "@/components/analytics";
 
 import { messages } from "@/lib/i18n/messages";
 import {
@@ -352,6 +353,8 @@ export function CalculatorWorkspace({
 
   const calculatorTranslations = messages[locale].calculator;
 
+  const { track } = useAnalytics();
+
   useEffect(() => {
     if (freightStatus !== "success" || activeCalculator !== "freight") {
       return;
@@ -387,6 +390,16 @@ export function CalculatorWorkspace({
     }
 
     freightSubmissionInProgress.current = true;
+    track("calculation_started", { locale });
+    void fetch("/api/metrics", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ event: "calculation_started" }),
+      cache: "no-store",
+      keepalive: true,
+    }).catch(() => {
+      console.warn("Operational metrics service is unavailable.");
+    });
     setShowFreightFeedback(false);
     setCalculatedFreightResult(undefined);
     setFreightStatus("loading");
